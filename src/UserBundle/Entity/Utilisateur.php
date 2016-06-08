@@ -69,6 +69,44 @@ class Utilisateur
      * @ORM\Column(name="photo_url", type="string", length=255)
      */
     private $photoUrl;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Password", type="string", length=255, nullable=true)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
+     */
+    private $salt;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Role", type="string", length=30, nullable=true)
+     */
+    private $role;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Roles", type="string", length=30, nullable=true)
+     */
+    private $roles;
+    
+    /**
+    * @var string
+    * @ORM\Column(name="username", type="string", length=255, unique=true, nullable=true)
+    */
+    private $username;
+    
+    public function eraseCredentials()
+    {
+    }
 
 
     /**
@@ -248,5 +286,123 @@ class Utilisateur
     {
         return $this->photoUrl;
     }
+    
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Utilisateur
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+    
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return Utilisateur
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+    
+     /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return Utilisateur
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+    
+    /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return Utilisateur
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param string $roles
+     *
+     * @return Utilisateur
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+public function getRoles()
+{
+    return array($this->role);
+}
+
+
+}
+
 }
 
