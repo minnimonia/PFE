@@ -404,5 +404,4 @@ public function getRoles()
 
 }
 
-}
 
