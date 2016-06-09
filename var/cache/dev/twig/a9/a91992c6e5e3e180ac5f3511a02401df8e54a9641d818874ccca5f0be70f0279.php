@@ -10,93 +10,88 @@ class __TwigTemplate_16edf0f43457d8ac3f4348db670b77285ad34ae3c917881f1e6b41cf7a9
         $this->parent = false;
 
         $this->blocks = array(
-            'title' => array($this, 'block_title'),
-            'stylesheets' => array($this, 'block_stylesheets'),
-            'body' => array($this, 'block_body'),
-            'javascripts' => array($this, 'block_javascripts'),
+            'pageheader' => array($this, 'block_pageheader'),
         );
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e0f28b4c0d7ddb4a0ede51dd063ecdd851378107676f7b2d81f11a0a5bae61d7 = $this->env->getExtension("native_profiler");
-        $__internal_e0f28b4c0d7ddb4a0ede51dd063ecdd851378107676f7b2d81f11a0a5bae61d7->enter($__internal_e0f28b4c0d7ddb4a0ede51dd063ecdd851378107676f7b2d81f11a0a5bae61d7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "base.html.twig"));
+        $__internal_e2a9423a8a133c3c13196bf334eb746742970a079b23178e498d710635fc19d3 = $this->env->getExtension("native_profiler");
+        $__internal_e2a9423a8a133c3c13196bf334eb746742970a079b23178e498d710635fc19d3->enter($__internal_e2a9423a8a133c3c13196bf334eb746742970a079b23178e498d710635fc19d3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "base.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
-<html>
+<html lang=\"en\">
+
     <head>
-        <meta charset=\"UTF-8\" />
-        <title>";
+        ";
         // line 5
-        $this->displayBlock('title', $context, $blocks);
-        echo "</title>
-        ";
+        $this->loadTemplate("head.html.twig", "base.html.twig", 5)->display($context);
         // line 6
-        $this->displayBlock('stylesheets', $context, $blocks);
-        // line 7
-        echo "        <link rel=\"icon\" type=\"image/x-icon\" href=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("favicon.ico"), "html", null, true);
-        echo "\" />
-    </head>
+        echo "    </head>
+
     <body>
-        ";
-        // line 10
-        $this->displayBlock('body', $context, $blocks);
-        // line 11
-        echo "        ";
-        $this->displayBlock('javascripts', $context, $blocks);
-        // line 12
-        echo "    </body>
-</html>
+
+        <div id=\"wrapper\">
+
+            <!-- Navigation -->
+            <nav class=\"navbar navbar-default navbar-static-top\" role=\"navigation\" style=\"margin-bottom: 0\">
+                <!-- /.navbar-top-links -->
+                ";
+        // line 15
+        $this->loadTemplate("header.html.twig", "base.html.twig", 15)->display($context);
+        // line 16
+        echo "                ";
+        $this->loadTemplate("sidebar.html.twig", "base.html.twig", 16)->display($context);
+        // line 17
+        echo "                <!-- /.navbar-static-side -->
+            </nav>
+
+            <!-- Page Content -->
+            <div id=\"page-wrapper\">
+                <div class=\"container-fluid\">
+                    <div class=\"row\">
+                        <div class=\"col-lg-12\">
+                            <h1 class=\"page-header\">";
+        // line 25
+        $this->displayBlock('pageheader', $context, $blocks);
+        // line 26
+        echo "</h1>
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+                    ";
+        // line 33
+        $this->loadTemplate("js.html.twig", "base.html.twig", 33)->display($context);
+        // line 34
+        echo "                </div>
+                <!-- /#page-wrapper -->
+
+            </div>
+            <!-- /#wrapper -->
+
+        </body>
+
+    </html>
 ";
         
-        $__internal_e0f28b4c0d7ddb4a0ede51dd063ecdd851378107676f7b2d81f11a0a5bae61d7->leave($__internal_e0f28b4c0d7ddb4a0ede51dd063ecdd851378107676f7b2d81f11a0a5bae61d7_prof);
+        $__internal_e2a9423a8a133c3c13196bf334eb746742970a079b23178e498d710635fc19d3->leave($__internal_e2a9423a8a133c3c13196bf334eb746742970a079b23178e498d710635fc19d3_prof);
 
     }
 
-    // line 5
-    public function block_title($context, array $blocks = array())
+    // line 25
+    public function block_pageheader($context, array $blocks = array())
     {
-        $__internal_6b3c223952262681ce316a33180afe2d6458b91fa785d888712b04388c7e5459 = $this->env->getExtension("native_profiler");
-        $__internal_6b3c223952262681ce316a33180afe2d6458b91fa785d888712b04388c7e5459->enter($__internal_6b3c223952262681ce316a33180afe2d6458b91fa785d888712b04388c7e5459_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_a3c98e3a23437e8b911ec10792acbeb6765e8e8a5486a34c754d79db049fad06 = $this->env->getExtension("native_profiler");
+        $__internal_a3c98e3a23437e8b911ec10792acbeb6765e8e8a5486a34c754d79db049fad06->enter($__internal_a3c98e3a23437e8b911ec10792acbeb6765e8e8a5486a34c754d79db049fad06_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "pageheader"));
 
-        echo "Welcome!";
+        // line 26
+        echo "                                ";
         
-        $__internal_6b3c223952262681ce316a33180afe2d6458b91fa785d888712b04388c7e5459->leave($__internal_6b3c223952262681ce316a33180afe2d6458b91fa785d888712b04388c7e5459_prof);
-
-    }
-
-    // line 6
-    public function block_stylesheets($context, array $blocks = array())
-    {
-        $__internal_cbdfaaf0230e87eaac9480ac64afd8ad23cf6162f419743eeadfaf1a8058f19c = $this->env->getExtension("native_profiler");
-        $__internal_cbdfaaf0230e87eaac9480ac64afd8ad23cf6162f419743eeadfaf1a8058f19c->enter($__internal_cbdfaaf0230e87eaac9480ac64afd8ad23cf6162f419743eeadfaf1a8058f19c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
-
-        
-        $__internal_cbdfaaf0230e87eaac9480ac64afd8ad23cf6162f419743eeadfaf1a8058f19c->leave($__internal_cbdfaaf0230e87eaac9480ac64afd8ad23cf6162f419743eeadfaf1a8058f19c_prof);
-
-    }
-
-    // line 10
-    public function block_body($context, array $blocks = array())
-    {
-        $__internal_fc49cc4067f63c5b324d992f9dc831a2be3a46b472ee9f13085d9ac16a338cef = $this->env->getExtension("native_profiler");
-        $__internal_fc49cc4067f63c5b324d992f9dc831a2be3a46b472ee9f13085d9ac16a338cef->enter($__internal_fc49cc4067f63c5b324d992f9dc831a2be3a46b472ee9f13085d9ac16a338cef_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
-
-        
-        $__internal_fc49cc4067f63c5b324d992f9dc831a2be3a46b472ee9f13085d9ac16a338cef->leave($__internal_fc49cc4067f63c5b324d992f9dc831a2be3a46b472ee9f13085d9ac16a338cef_prof);
-
-    }
-
-    // line 11
-    public function block_javascripts($context, array $blocks = array())
-    {
-        $__internal_040386b7158b69fa9b24878d6e8ebb2ba00aa8311f6e3bfcc0e19a7fd7b51153 = $this->env->getExtension("native_profiler");
-        $__internal_040386b7158b69fa9b24878d6e8ebb2ba00aa8311f6e3bfcc0e19a7fd7b51153->enter($__internal_040386b7158b69fa9b24878d6e8ebb2ba00aa8311f6e3bfcc0e19a7fd7b51153_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
-
-        
-        $__internal_040386b7158b69fa9b24878d6e8ebb2ba00aa8311f6e3bfcc0e19a7fd7b51153->leave($__internal_040386b7158b69fa9b24878d6e8ebb2ba00aa8311f6e3bfcc0e19a7fd7b51153_prof);
+        $__internal_a3c98e3a23437e8b911ec10792acbeb6765e8e8a5486a34c754d79db049fad06->leave($__internal_a3c98e3a23437e8b911ec10792acbeb6765e8e8a5486a34c754d79db049fad06_prof);
 
     }
 
@@ -112,20 +107,49 @@ class __TwigTemplate_16edf0f43457d8ac3f4348db670b77285ad34ae3c917881f1e6b41cf7a9
 
     public function getDebugInfo()
     {
-        return array (  93 => 11,  82 => 10,  71 => 6,  59 => 5,  50 => 12,  47 => 11,  45 => 10,  38 => 7,  36 => 6,  32 => 5,  26 => 1,);
+        return array (  92 => 26,  86 => 25,  70 => 34,  68 => 33,  59 => 26,  57 => 25,  47 => 17,  44 => 16,  42 => 15,  31 => 6,  29 => 5,  23 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
-/* <html>*/
+/* <html lang="en">*/
+/* */
 /*     <head>*/
-/*         <meta charset="UTF-8" />*/
-/*         <title>{% block title %}Welcome!{% endblock %}</title>*/
-/*         {% block stylesheets %}{% endblock %}*/
-/*         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />*/
+/*         {% include 'head.html.twig' %}*/
 /*     </head>*/
+/* */
 /*     <body>*/
-/*         {% block body %}{% endblock %}*/
-/*         {% block javascripts %}{% endblock %}*/
-/*     </body>*/
-/* </html>*/
+/* */
+/*         <div id="wrapper">*/
+/* */
+/*             <!-- Navigation -->*/
+/*             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">*/
+/*                 <!-- /.navbar-top-links -->*/
+/*                 {% include 'header.html.twig' %}*/
+/*                 {% include 'sidebar.html.twig' %}*/
+/*                 <!-- /.navbar-static-side -->*/
+/*             </nav>*/
+/* */
+/*             <!-- Page Content -->*/
+/*             <div id="page-wrapper">*/
+/*                 <div class="container-fluid">*/
+/*                     <div class="row">*/
+/*                         <div class="col-lg-12">*/
+/*                             <h1 class="page-header">{% block pageheader %}*/
+/*                                 {% endblock %}</h1>*/
+/*                             </div>*/
+/*                             <!-- /.col-lg-12 -->*/
+/*                         </div>*/
+/*                         <!-- /.row -->*/
+/*                     </div>*/
+/*                     <!-- /.container-fluid -->*/
+/*                     {% include 'js.html.twig' %}*/
+/*                 </div>*/
+/*                 <!-- /#page-wrapper -->*/
+/* */
+/*             </div>*/
+/*             <!-- /#wrapper -->*/
+/* */
+/*         </body>*/
+/* */
+/*     </html>*/
 /* */

@@ -486,7 +486,7 @@
                   <tag name="cache.pool"/>
                   <argument>tz5RE2Kzmr</argument>
                   <argument></argument>
-                  <argument>BI5Spqo94PThvZ+sBto6AA</argument>
+                  <argument>eIfuS2CUlPanomzTeX83CA</argument>
                   <argument>C:\wamp\www\git\pfe\var\cache\dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -499,7 +499,7 @@
                   <tag name="cache.pool"/>
                   <argument>7Yj68dncLe</argument>
                   <argument></argument>
-                  <argument>BI5Spqo94PThvZ+sBto6AA</argument>
+                  <argument>eIfuS2CUlPanomzTeX83CA</argument>
                   <argument>C:\wamp\www\git\pfe\var\cache\dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -831,7 +831,7 @@
       <tag name="cache.pool"/>
       <argument>wGngERQU6k</argument>
       <argument></argument>
-      <argument>BI5Spqo94PThvZ+sBto6AA</argument>
+      <argument>eIfuS2CUlPanomzTeX83CA</argument>
       <argument>C:\wamp\www\git\pfe\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1557,7 +1557,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5758372ebb9414.67796397</argument>
+            <argument>57593b3bb96d05.74047243</argument>
           </service>
         </argument>
       </argument>
@@ -1691,7 +1691,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5758372ebb9414.67796397</argument>
+            <argument>57593b3bb96d05.74047243</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2078,7 +2078,9 @@
       <argument type="service">
         <service class="Doctrine\ORM\Configuration" public="false">
           <call method="setEntityNamespaces">
-            <argument type="collection"/>
+            <argument type="collection">
+              <argument key="UserBundle">UserBundle\Entity</argument>
+            </argument>
           </call>
           <call method="setMetadataCacheImpl">
             <argument type="service" id="doctrine_cache.providers.doctrine.orm.default_metadata_cache"/>
@@ -2091,7 +2093,19 @@
           </call>
           <call method="setMetadataDriverImpl">
             <argument type="service">
-              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false"/>
+              <service class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\wamp\www\git\pfe\src\UserBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>UserBundle\Entity</argument>
+                </call>
+              </service>
             </argument>
           </call>
           <call method="setProxyDir">
@@ -2126,6 +2140,15 @@
       </argument>
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
       <configurator service="doctrine.orm.default_manager_configurator" method="configure"/>
+    </service>
+    <service id="doctrine.orm.default_entity_manager.property_info_extractor" class="Symfony\Bridge\Doctrine\PropertyInfo\DoctrineExtractor">
+      <tag name="property_info.list_extractor" priority="-1001"/>
+      <tag name="property_info.type_extractor" priority="-999"/>
+      <argument type="service">
+        <service class="Doctrine\Common\Persistence\Mapping\ClassMetadataFactory" public="false">
+          <factory service="doctrine.orm.default_entity_manager" method="getMetadataFactory"/>
+        </service>
+      </argument>
     </service>
     <service id="sensio_framework_extra.view.guesser" class="Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser">
       <argument type="service" id="kernel"/>
