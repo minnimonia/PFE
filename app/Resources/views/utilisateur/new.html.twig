@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Utilisateur creation</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form.prenom, {'attr': {'placeholder': 'Prénom', 'class' : 'form-control'}}) }}
+    {{ form_widget(form.nom, {'attr': {'placeholder': 'Nom', 'class' : 'form-control'}}) }} 
+    {{ form_widget(form.adresse, {'attr': {'placeholder': 'Adresse', 'class' : 'form-control'}}) }}
+    {{ form_widget(form.codePostal, {'attr': {'placeholder': 'Code Postal', 'class' : 'form-control'}}) }}
+    {{ form_widget(form.mail, {'attr': {'placeholder': 'Mail', 'class' : 'form-control'}}) }}
+    {{ form_widget(form.tel, {'attr': {'placeholder': 'Téléphone', 'class' : 'form-control'}}) }}
+    {{ form_widget(form.photoUrl, {'attr': {'placeholder': 'Lien de la photo', 'class' : 'form-control'}}) }}
+    {{ form_widget(form.password, {'attr': {'placeholder': 'Mot de passe', 'class' : 'form-control'}}) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('utilisateur_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

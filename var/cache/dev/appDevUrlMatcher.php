@@ -105,6 +105,68 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_default_index',);
         }
 
+        if (0 === strpos($pathinfo, '/utilisateur')) {
+            // utilisateur_index
+            if (rtrim($pathinfo, '/') === '/utilisateur') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_utilisateur_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'utilisateur_index');
+                }
+
+                return array (  '_controller' => 'UserBundle\\Controller\\UtilisateurController::indexAction',  '_route' => 'utilisateur_index',);
+            }
+            not_utilisateur_index:
+
+            // utilisateur_new
+            if ($pathinfo === '/utilisateur/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_utilisateur_new;
+                }
+
+                return array (  '_controller' => 'UserBundle\\Controller\\UtilisateurController::newAction',  '_route' => 'utilisateur_new',);
+            }
+            not_utilisateur_new:
+
+            // utilisateur_show
+            if (preg_match('#^/utilisateur/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_utilisateur_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'utilisateur_show')), array (  '_controller' => 'UserBundle\\Controller\\UtilisateurController::showAction',));
+            }
+            not_utilisateur_show:
+
+            // utilisateur_edit
+            if (preg_match('#^/utilisateur/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_utilisateur_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'utilisateur_edit')), array (  '_controller' => 'UserBundle\\Controller\\UtilisateurController::editAction',));
+            }
+            not_utilisateur_edit:
+
+            // utilisateur_delete
+            if (preg_match('#^/utilisateur/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_utilisateur_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'utilisateur_delete')), array (  '_controller' => 'UserBundle\\Controller\\UtilisateurController::deleteAction',));
+            }
+            not_utilisateur_delete:
+
+        }
+
         // homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
