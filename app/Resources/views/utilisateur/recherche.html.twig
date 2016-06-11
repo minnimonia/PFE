@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block pageheader %}Recherche d'artisans{% endblock %}
+{% block body %}
+
+    <form method="post">
+        
+
+            <table class="table table-striped table-bordered table-hover">
+        <tbody>
+            <tr>
+                <th>Choisissez une compétence dans la liste suivante :</th>
+            </tr>
+            <td>
+            <select class="form-control" id="demo" multiple="multiple" name="comp[]">
+                {% for comp in competences %}
+                    <option value="{{comp.id}}"> {{comp.nom}} </option>
+                {% endfor %}
+            </select>
+            </td>
+            <tr>
+                <th>Entrez votre code postal :</th>
+            </tr>
+            <td>
+                <input type="tel" placeholder="75000..." name="code"/>
+            </td>
+        </tbody>
+    </table>
+
+    <ul>
+            <input type="submit" value="Recherche" class="btn btn-primary">
+    </ul>
+
+    </form>
+
+{% endblock %}
+{% block javascript %}
+    <script>
+        $(document).ready(function() {
+        $('#demo').multiselect();
+        });
+</script>
+{% endblock %}

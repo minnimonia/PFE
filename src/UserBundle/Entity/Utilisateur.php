@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="utilisateur")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UtilisateurRepository")
  */
-class Utilisateur
-{
+class Utilisateur {
+
     /**
      * @var int
      *
@@ -69,7 +69,7 @@ class Utilisateur
      * @ORM\Column(name="photo_url", type="string", length=255)
      */
     private $photoUrl;
-    
+
     /**
      * @var string
      *
@@ -83,7 +83,7 @@ class Utilisateur
      * @ORM\Column(name="salt", type="string", length=255, nullable=true)
      */
     private $salt;
-    
+
     /**
      * @var string
      *
@@ -97,25 +97,23 @@ class Utilisateur
      * @ORM\Column(name="Roles", type="string", length=30, nullable=true)
      */
     private $roles;
-    
-    /**
-    * @var string
-    * @ORM\Column(name="username", type="string", length=255, unique=true, nullable=true)
-    */
-    private $username;
-    
-    public function eraseCredentials()
-    {
-    }
 
+    /**
+     * @var string
+     * @ORM\Column(name="username", type="string", length=255, unique=true, nullable=true)
+     */
+    private $username;
+
+    public function eraseCredentials() {
+        
+    }
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -126,8 +124,7 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setPrenom($prenom)
-    {
+    public function setPrenom($prenom) {
         $this->prenom = $prenom;
 
         return $this;
@@ -138,8 +135,7 @@ class Utilisateur
      *
      * @return string
      */
-    public function getPrenom()
-    {
+    public function getPrenom() {
         return $this->prenom;
     }
 
@@ -150,8 +146,7 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -162,8 +157,7 @@ class Utilisateur
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -174,8 +168,7 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setAdresse($adresse)
-    {
+    public function setAdresse($adresse) {
         $this->adresse = $adresse;
 
         return $this;
@@ -186,8 +179,7 @@ class Utilisateur
      *
      * @return string
      */
-    public function getAdresse()
-    {
+    public function getAdresse() {
         return $this->adresse;
     }
 
@@ -198,8 +190,7 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setCodePostal($codePostal)
-    {
+    public function setCodePostal($codePostal) {
         $this->codePostal = $codePostal;
 
         return $this;
@@ -210,8 +201,7 @@ class Utilisateur
      *
      * @return int
      */
-    public function getCodePostal()
-    {
+    public function getCodePostal() {
         return $this->codePostal;
     }
 
@@ -222,8 +212,7 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setMail($mail)
-    {
+    public function setMail($mail) {
         $this->mail = $mail;
 
         return $this;
@@ -234,8 +223,7 @@ class Utilisateur
      *
      * @return string
      */
-    public function getMail()
-    {
+    public function getMail() {
         return $this->mail;
     }
 
@@ -246,8 +234,7 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setTel($tel)
-    {
+    public function setTel($tel) {
         $this->tel = $tel;
 
         return $this;
@@ -258,8 +245,7 @@ class Utilisateur
      *
      * @return string
      */
-    public function getTel()
-    {
+    public function getTel() {
         return $this->tel;
     }
 
@@ -270,8 +256,7 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setPhotoUrl($photoUrl)
-    {
+    public function setPhotoUrl($photoUrl) {
         $this->photoUrl = $photoUrl;
 
         return $this;
@@ -282,11 +267,10 @@ class Utilisateur
      *
      * @return string
      */
-    public function getPhotoUrl()
-    {
+    public function getPhotoUrl() {
         return $this->photoUrl;
     }
-    
+
     /**
      * Set username
      *
@@ -294,8 +278,7 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setUsername($username)
-    {
+    public function setUsername($username) {
         $this->username = $username;
 
         return $this;
@@ -306,11 +289,10 @@ class Utilisateur
      *
      * @return string
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->username;
     }
-    
+
     /**
      * Set password
      *
@@ -318,8 +300,7 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -330,19 +311,17 @@ class Utilisateur
      *
      * @return string
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
-    
-     /**
+
+    /**
      * Set salt
      *
      * @param string $salt
      * @return Utilisateur
      */
-    public function setSalt($salt)
-    {
+    public function setSalt($salt) {
         $this->salt = $salt;
 
         return $this;
@@ -353,11 +332,10 @@ class Utilisateur
      *
      * @return string
      */
-    public function getSalt()
-    {
+    public function getSalt() {
         return $this->salt;
     }
-    
+
     /**
      * Set role
      *
@@ -365,8 +343,7 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setRole($role)
-    {
+    public function setRole($role) {
         $this->role = $role;
 
         return $this;
@@ -377,8 +354,7 @@ class Utilisateur
      *
      * @return string
      */
-    public function getRole()
-    {
+    public function getRole() {
         return $this->role;
     }
 
@@ -389,19 +365,27 @@ class Utilisateur
      *
      * @return Utilisateur
      */
-    public function setRoles($roles)
-    {
+    public function setRoles($roles) {
         $this->roles = $roles;
 
         return $this;
     }
 
-public function getRoles()
-{
-    return array($this->role);
+    public function getRoles() {
+        return array($this->role);
+    }
+
+    public function findArtisanByParametres($data) {
+
+        $query = $this->createQueryBuilder('a');
+
+        $query->where('a.codePostal BETWEEN :codePostal AND :anneeProductionMax')
+                ->andWhere('a.competence = :competence')
+                ->setParameters(array(
+                    'codePostal' => $data['codePostal'],
+                    'competence' => $data['Compétence']));
+
+        return $query->getQuery()->getResult();
+    }
+
 }
-
-
-}
-
-

@@ -2,22 +2,95 @@
 {% block pageheader %}Ajouter un utilisateur{% endblock %}
 {% block body %}
 
-    {{ form_start(form) }}
-    {{ form_widget(form.prenom, {'attr': {'placeholder': 'Prénom', 'class' : 'form-control'}}) }}
-    {{ form_widget(form.nom, {'attr': {'placeholder': 'Nom', 'class' : 'form-control'}}) }} 
-    {{ form_widget(form.adresse, {'attr': {'placeholder': 'Adresse', 'class' : 'form-control'}}) }}
-    {{ form_widget(form.codePostal, {'attr': {'placeholder': 'Code Postal', 'class' : 'form-control'}}) }}
-    {{ form_widget(form.mail, {'attr': {'placeholder': 'Mail', 'class' : 'form-control'}}) }}
-    {{ form_widget(form.tel, {'attr': {'placeholder': 'Téléphone', 'class' : 'form-control'}}) }}
-    {{ form_widget(form.photoUrl, {'attr': {'placeholder': 'Lien de la photo', 'class' : 'form-control'}}) }}
-    {{ form_widget(form.password, {'attr': {'placeholder': 'Mot de passe', 'class' : 'form-control'}}) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Créer" class="btn btn-primary"/>
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('utilisateur_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <form  name="adminbundle_personnelmarel" class="form-signup" id="form" action="{{ path('utilisateur_new')}}" class="form-signup"  method="POST">
+        <input type='hidden' id="addoredit" value="add">
+        <div class="" id="adminbundle_personnelmarel">
+
+            <div class="row form-group" >
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        
+                            <input type="text" id="utilisateur_prenom" name="utilisateur[prenom]" required="required" maxlength="255" placeholder="Prénom" class="form-control" />                            </div>
+                    
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        
+                            <input type="text" id="utilisateur_nom" name="utilisateur[nom]" required="required" maxlength="255" placeholder="Nom" class="form-control" /> 
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        
+                            <input type="text" id="utilisateur_adresse" name="utilisateur[adresse]" required="required" maxlength="255" placeholder="Adresse" class="form-control" />
+                            <!--<div id="keyboard" style=""></div>-->
+                        
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class=" form-group">
+                        
+                            <input type="number" id="utilisateur_codePostal" name="utilisateur[codePostal]" required="required" placeholder="Code Postal" class="form-control" />
+                            <!--<div id="keyboard_nom" style="display:none;"></div>-->
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group" >
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        
+                            <input type="text" id="utilisateur_mail" name="utilisateur[mail]" required="required" maxlength="255" placeholder="Mail" class="form-control" />
+                       
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class=" form-group">
+                        
+    <input type="text" id="utilisateur_tel" name="utilisateur[tel]" required="required" maxlength="255" placeholder="Téléphone" class="form-control" />
+                            <!--<div id="keyboard_lieaunaissance" style="display:none;"></div>-->
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                       
+    <input type="text" id="utilisateur_photoUrl" name="utilisateur[photoUrl]" required="required" maxlength="255" placeholder="Lien de la photo" class="form-control" />
+                        
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        
+    <input type="text" id="utilisateur_password" name="utilisateur[password]" maxlength="255" placeholder="Mot de passe" class="form-control" />
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <center>
+                <label><input class='radiorole' type="radio"  required name="adminbundle_personnelmarel[idRole]" value="4" data-radio="iradio_minimal-blue" checked="checked">Artisan</label>
+                <label><input class='radiorole' type="radio"  name="adminbundle_personnelmarel[idRole]" value="3" data-radio="iradio_minimal-blue">Particulier</label>
+            </center>
+
+            <center>
+                <button type="submit" class="btn btn-primary">Créer 
+                    <span class="ti-save"></span>
+                </button>
+                <a href="{{path('utilisateur_index')}}" id="suipelbundle_refgouvernorat_submit" name="suipelbundle_refgouvernorat[submit]" class="btn btn-default btn-wide">Retour 
+                    <span class="ti-back-right"></span>
+                </a>
+                    </center>
+
+        </div>
+    </form>
 {% endblock %}

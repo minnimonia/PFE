@@ -1,14 +1,9 @@
 {% extends 'base.html.twig' %}
-
+{% block pageheader %}Utilisateur{% endblock %}
 {% block body %}
-    <h1>Utilisateur</h1>
 
     <table class="table table-striped table-bordered table-hover">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ utilisateur.id }}</td>
-            </tr>
             <tr>
                 <th>Prenom</th>
                 <td>{{ utilisateur.prenom }}</td>

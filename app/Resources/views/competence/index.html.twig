@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block pageheader %}Liste des compétences{% endblock %}
+{% block body %}
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for competence in competences %}
+            <tr>
+                <td><a href="{{ path('competence_show', { 'id': competence.id }) }}">{{ competence.nom }}</a></td>
+                <td>{{ competence.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('competence_show', { 'id': competence.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('competence_edit', { 'id': competence.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('competence_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
