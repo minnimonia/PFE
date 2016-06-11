@@ -15,8 +15,8 @@ class __TwigTemplate_f80172c1cb4bbdac69efa0b9780ee5bf55476e5dcca66d2ce47689b824e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_15518c59cc687109bcd475bd811a731f2d612432c16a74b64ef5ed72b1e4ebfe = $this->env->getExtension("native_profiler");
-        $__internal_15518c59cc687109bcd475bd811a731f2d612432c16a74b64ef5ed72b1e4ebfe->enter($__internal_15518c59cc687109bcd475bd811a731f2d612432c16a74b64ef5ed72b1e4ebfe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "js.html.twig"));
+        $__internal_86d8fcd22d49852d78b76bcb11daf425bd0918ec5ba3fd2e427e581032cbc49f = $this->env->getExtension("native_profiler");
+        $__internal_86d8fcd22d49852d78b76bcb11daf425bd0918ec5ba3fd2e427e581032cbc49f->enter($__internal_86d8fcd22d49852d78b76bcb11daf425bd0918ec5ba3fd2e427e581032cbc49f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "js.html.twig"));
 
         // line 1
         echo "<!-- jQuery -->
@@ -43,7 +43,7 @@ class __TwigTemplate_f80172c1cb4bbdac69efa0b9780ee5bf55476e5dcca66d2ce47689b824e
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("assets/dist/js/sb-admin-2.js"), "html", null, true);
         echo "\"></script>";
         
-        $__internal_15518c59cc687109bcd475bd811a731f2d612432c16a74b64ef5ed72b1e4ebfe->leave($__internal_15518c59cc687109bcd475bd811a731f2d612432c16a74b64ef5ed72b1e4ebfe_prof);
+        $__internal_86d8fcd22d49852d78b76bcb11daf425bd0918ec5ba3fd2e427e581032cbc49f->leave($__internal_86d8fcd22d49852d78b76bcb11daf425bd0918ec5ba3fd2e427e581032cbc49f_prof);
 
     }
 
