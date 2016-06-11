@@ -41,23 +41,26 @@ class UserComp {
      */
     private $idComp;
 
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
     /**
      * Set idUser
      *
-     * @param integer $idUser
+     * @param \UserBundle\Entity\Utilisateur $idUser
      *
      * @return UserComp
      */
-    public function setIdUser($idUser) {
+    public function setIdUser(\UserBundle\Entity\Utilisateur $idUser = null)
+    {
         $this->idUser = $idUser;
 
         return $this;
@@ -66,20 +69,22 @@ class UserComp {
     /**
      * Get idUser
      *
-     * @return int
+     * @return \UserBundle\Entity\Utilisateur
      */
-    public function getIdUser() {
+    public function getIdUser()
+    {
         return $this->idUser;
     }
 
     /**
      * Set idComp
      *
-     * @param integer $idComp
+     * @param \UserBundle\Entity\Competence $idComp
      *
      * @return UserComp
      */
-    public function setIdComp($idComp) {
+    public function setIdComp(\UserBundle\Entity\Competence $idComp = null)
+    {
         $this->idComp = $idComp;
 
         return $this;
@@ -88,10 +93,10 @@ class UserComp {
     /**
      * Get idComp
      *
-     * @return int
+     * @return \UserBundle\Entity\Competence
      */
-    public function getIdComp() {
+    public function getIdComp()
+    {
         return $this->idComp;
     }
-
 }
