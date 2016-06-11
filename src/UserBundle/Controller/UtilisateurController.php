@@ -60,21 +60,18 @@ class UtilisateurController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
-        $utilisateur = new Utilisateur();
-        $form = $this->createForm('UserBundle\Form\UtilisateurType', $utilisateur);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($utilisateur);
-            $em->flush();
-
-            return $this->redirectToRoute('utilisateur_show', array('id' => $utilisateur->getId()));
+        
+        $em = $this->getDoctrine()->getManager();
+        $user = $request->request->get('utilisateur');
+        $comp = $request->request->get('comp');
+        if($user!=null)
+        {
+            var_dump($user);
+            var_dump($comp);exit();
         }
-
+        $competences = $em->getRepository('UserBundle:Competence')->findAll();
         return $this->render('utilisateur/new.html.twig', array(
-                    'utilisateur' => $utilisateur,
-                    'form' => $form->createView(),
+            'competences' => $competences,
         ));
     }
 
