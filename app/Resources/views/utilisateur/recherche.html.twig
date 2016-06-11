@@ -21,7 +21,11 @@
                 <th>Entrez votre code postal :</th>
             </tr>
             <td>
-                <input type="tel" placeholder="75000..." name="code"/>
+                <select class="form-control" id="demo2" multiple="multiple" name="code[]">
+                {% for code in codes %}
+                    <option value="{{code.id}}"> {{code.departement}} </option>
+                {% endfor %}
+            </select>
             </td>
         </tbody>
     </table>
@@ -31,12 +35,46 @@
     </ul>
 
     </form>
+    <table class="table table-striped table-bordered table-hover">
+        <tbody>
+        {% for tab in tableau %}
+            <tr>
+                <th>Prenom</th>
+                <td>{{ tab.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ tab.nom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ tab.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Codepostal</th>
+                <td>{{ tab.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ tab.mail }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ tab.tel }}</td>
+            </tr>
+            <tr>
+                <th>Photourl</th>
+                <td>{{ tab.photoUrl }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
 {% block javascript %}
     <script>
         $(document).ready(function() {
-        $('#demo').multiselect();
+        $('#demo').multiselect();$('#demo2').multiselect();
         });
 </script>
 {% endblock %}

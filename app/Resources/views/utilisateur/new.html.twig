@@ -36,8 +36,11 @@
                 <div class="col-sm-6">
                     <div class=" form-group">
 
-                        <input type="text" id="utilisateur_codePostal" name="utilisateur[codePostal]" required="required" placeholder="Code Postal" class="form-control" />
-                        <!--<div id="keyboard_nom" style="display:none;"></div>-->
+                        <select class="form-control" id="demo2" multiple="multiple" name="code[]">
+                        {% for code in codes %}
+                            <option value="{{code.id}}"> {{code.departement}} </option>
+                        {% endfor %}
+                        </select>
 
                     </div>
                 </div>
@@ -109,7 +112,7 @@
         $(document).ready(function () {
             $("#competence").hide();
             $('#demo').multiselect();
-
+            $('#demo2').multiselect();
             $("input[name=role]:radio").change(function () {
 
                 //  alert($(this).val());

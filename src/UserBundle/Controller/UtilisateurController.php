@@ -25,7 +25,7 @@ class UtilisateurController extends Controller {
      */
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
-        
+
         $utilisateurs = $em->getRepository('UserBundle:Utilisateur')->findAll();
 
         return $this->render('utilisateur/index.html.twig', array(
@@ -40,16 +40,39 @@ class UtilisateurController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $comp = $request->request->get('comp');
         $code = $request->request->get('code');
-        if($comp!=null && $code!=null)
-        {
-            var_dump($code);
-            var_dump($comp);exit();
+        if ($comp != null && $code != null) {
+            $qb = $em->getRepository('UserBundle:UserComp')->createQueryBuilder('u');
+            $qb->Where("u.idComp = $comp[0]");
+            for ($i = 1; $i < sizeof($comp); $i++) {
+                $qb->orWhere("u.idComp = $comp[$i]");
+            }
+            $entities1 = $qb->getQuery()->getArrayResult();
+            if ($entities1 != null) {
+                $qb2 = $em->getRepository('UserBundle:UserCode')->createQueryBuilder('v');
+                $qb2->Where("v.idCode = $code[0]");
+                for ($i = 1; $i < sizeof($code); $i++) {
+                    $qb2->orWhere("v.idCode = $code[$i]");
+                }
+                $entities2 = $qb2->getQuery()->getArrayResult();
+                if ($entities2 != null) {
+                    $resultats = array_intersect($entities1[0], $entities2[0]);
+                    if ($resultats != null) {
+                        $qb3 = $em->getRepository('UserBundle:Utilisateur')->createQueryBuilder('w');
+                        $qb3->Where("w.id = $code[0]");
+                        for ($i = 1; $i < sizeof($resultats); $i++) {
+                            $qb3->orWhere("w.id = $resultats[$i]");
+                        }
+                        
+                       $tableau = $qb3->getQuery()->getResult();
+                    }
+                }
+            }
         }
 
+ 
         $competences = $em->getRepository('UserBundle:Competence')->findAll();
-
-        return $this->render('Utilisateur/recherche.html.twig', array(
-            'competences' => $competences,
+        $codes = $em->getRepository('UserBundle:CodePostal')->findAll();
+        return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes, 'tableau' => $tableau,
         ));
     }
 
@@ -60,22 +83,22 @@ class UtilisateurController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
-        
+
         $em = $this->getDoctrine()->getManager();
         $user = $request->request->get('utilisateur');
         $comp = $request->request->get('comp');
-        if($user!=null)
-        {
+        if ($user != null) {
             var_dump($user);
-            var_dump($comp);exit();
+            var_dump($comp);
+            exit();
         }
         $competences = $em->getRepository('UserBundle:Competence')->findAll();
+        $codes = $em->getRepository('UserBundle:CodePostal')->findAll();
         return $this->render('utilisateur/new.html.twig', array(
-            'competences' => $competences,
+                    'competences' => $competences, 'codes' => $codes
         ));
     }
-    
-    
+
     /**
      * Finds and displays a Utilisateur entity.
      *
