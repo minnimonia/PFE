@@ -74,7 +74,8 @@ class UtilisateurController extends Controller {
             'competences' => $competences,
         ));
     }
-
+    
+    
     /**
      * Finds and displays a Utilisateur entity.
      *
