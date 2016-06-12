@@ -38,6 +38,8 @@ class UtilisateurController extends Controller {
      */
     public function rechercheAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
+        $competences = $em->getRepository('UserBundle:Competence')->findAll();
+        $codes = $em->getRepository('UserBundle:CodePostal')->findAll();
         $comp = $request->request->get('comp');
         $code = $request->request->get('code');
         if ($comp != null && $code != null) {
@@ -70,9 +72,6 @@ class UtilisateurController extends Controller {
         return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes, 'tableau' => $tableau));
         }
 
- 
-        $competences = $em->getRepository('UserBundle:Competence')->findAll();
-        $codes = $em->getRepository('UserBundle:CodePostal')->findAll();
         return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes));
         
     }
