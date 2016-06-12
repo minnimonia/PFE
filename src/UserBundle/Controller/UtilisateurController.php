@@ -48,28 +48,41 @@ class UtilisateurController extends Controller {
             for ($i = 1; $i < sizeof($comp); $i++) {
                 $qb->orWhere("u.idComp = $comp[$i]");
             }
-            $entities1 = $qb->getQuery()->getArrayResult();
+            $entities1 =array();
+            
+            for ($i = 0; $i < sizeof($qb->getQuery()->getResult()); $i++) {                
+                $entities1[$i]=$qb->getQuery()->getResult()[$i]->getIdUser()->getId();
+            }
             if ($entities1 != null) {
                 $qb2 = $em->getRepository('UserBundle:UserCode')->createQueryBuilder('v');
                 $qb2->Where("v.idCode = $code[0]");
                 for ($i = 1; $i < sizeof($code); $i++) {
                     $qb2->orWhere("v.idCode = $code[$i]");
                 }
-                $entities2 = $qb2->getQuery()->getArrayResult();
+                
+            
+            $entities2 =array();
+            for ($i = 0; $i < sizeof($qb2->getQuery()->getResult()); $i++) {                
+            $entities2[$i]=$qb2->getQuery()->getResult()[$i]->getIdUser()->getId();    
+            }
                 if ($entities2 != null) {
-                    $resultats = array_intersect($entities1[0], $entities2[0]);
+                    $resultats =array();
+                    $resultats= array_intersect($entities2, $entities1);
                     if ($resultats != null) {
+                      
                         $qb3 = $em->getRepository('UserBundle:Utilisateur')->createQueryBuilder('w');
-                        $qb3->Where("w.id = $code[0]");
-                        for ($i = 1; $i < sizeof($resultats); $i++) {
-                            $qb3->orWhere("w.id = $resultats[$i]");
+                       // $qb3->Where("w.id = $resultats[0]");
+                        foreach ($resultats as $res) {
+                            
+                            $qb3->orWhere("w.id = $res");
                         }
 
                         $tableau = $qb3->getQuery()->getResult();
+                        return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes, 'tableau' => $tableau));
                     }
                 }
             }
-            return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes, 'tableau' => $tableau));
+            
         }
 
         return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes));

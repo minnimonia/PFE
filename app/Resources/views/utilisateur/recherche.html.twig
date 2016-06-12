@@ -40,7 +40,6 @@
                 <tr>
                     <th>Prenom</th>
                     <th>Nom</th>
-                    <th>Codepostal</th>
                     <th>Photo</th>
                 </tr>
             </thead>
@@ -49,7 +48,6 @@
                     <tr>
                         <td><a href="{{ path('utilisateur_show', { 'id': tab.id }) }}">{{ tab.prenom }}</a></td>
                         <td>{{ tab.nom }}</td>
-                        <td>{{ tab.codePostal }}000</td>
                         <td>{{ tab.photoUrl }}</td>
                     </tr>
                 {% endfor %}
