@@ -3,81 +3,72 @@
 {% block body %}
 
     <form method="post">
-        
 
-            <table class="table table-striped table-bordered table-hover">
-        <tbody>
-            <tr>
-                <th>Choisissez une compétence dans la liste suivante :</th>
-            </tr>
+        <table class="table table-striped table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <th>Choisissez une compétence dans la liste suivante :</th>
+                </tr>
             <td>
-            <select class="form-control" id="demo" multiple="multiple" name="comp[]">
-                {% for comp in competences %}
-                    <option value="{{comp.id}}"> {{comp.nom}} </option>
-                {% endfor %}
-            </select>
+                <select class="form-control" id="demo" multiple="multiple" name="comp[]">
+                    {% for comp in competences %}
+                        <option value="{{comp.id}}"> {{comp.nom}} </option>
+                    {% endfor %}
+                </select>
             </td>
             <tr>
                 <th>Entrez votre code postal :</th>
             </tr>
             <td>
                 <select class="form-control" id="demo2" multiple="multiple" name="code[]">
-                {% for code in codes %}
-                    <option value="{{code.id}}"> {{code.departement}} </option>
-                {% endfor %}
-            </select>
+                    {% for code in codes %}
+                        <option value="{{code.id}}"> {{code.code}} - {{code.departement}} </option>
+                    {% endfor %}
+                </select>
             </td>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <ul>
+        <ul>
             <input type="submit" value="Recherche" class="btn btn-primary">
-    </ul>
+        </ul>
 
     </form>
-            {% if tableau is defined %}
-    <table class="table table-striped table-bordered table-hover">
-        <tbody>
-        {% for tab in tableau %}
-            <tr>
-                <th>Prenom</th>
-                <td>{{ tab.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ tab.nom }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ tab.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Codepostal</th>
-                <td>{{ tab.codePostal }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ tab.mail }}</td>
-            </tr>
-            <tr>
-                <th>Tel</th>
-                <td>{{ tab.tel }}</td>
-            </tr>
-            <tr>
-                <th>Photourl</th>
-                <td>{{ tab.photoUrl }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-        {% endif %}
+    {% if tableau is defined %}
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Codepostal</th>
+                    <th>Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tab in tableau %}
+                    <tr>
+                        <td><a href="{{ path('utilisateur_show', { 'id': tab.id }) }}">{{ tab.prenom }}</a></td>
+                        <td>{{ tab.nom }}</td>
+                        <td>{{ tab.codePostal }}000</td>
+                        <td>{{ tab.photoUrl }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 
 {% endblock %}
 {% block javascript %}
     <script>
-        $(document).ready(function() {
-        $('#demo').multiselect();
-        $('#demo2').multiselect();
+        $(document).ready(function () {
+            $('#demo').multiselect({
+                includeSelectAllOption: true,
+                maxHeight: 200
+            });
+            $('#demo2').multiselect({
+                includeSelectAllOption: true,
+                maxHeight: 200
+            });
         });
-</script>
+    </script>
 {% endblock %}

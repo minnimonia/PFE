@@ -86,43 +86,49 @@ class UtilisateurController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $user = $request->request->get('utilisateur');
         $comp = $request->request->get('comp');
-        $code = $request->request->get('code');
-        $role=$request->request->get('role');
-        
+        $codes = $request->request->get('code');
+        $role = $request->request->get('role');
+
         if ($user != null) {
             $utilisateur = new Utilisateur();
             $utilisateur->setAdresse($user['adresse']);
             $utilisateur->setNom($user['nom']);
             $utilisateur->setPrenom($user['prenom']);
-            $utilisateur->setUsername($user['prenom']);
             $utilisateur->setMail($user['mail']);
             $utilisateur->setTel($user['tel']);
-            if($role=="1")
-            {
-            $utilisateur->setRole("ROLE_PARTICULIER");
-            $utilisateur->setRoles("ROLE_PARTICULIER");
-            }else
-            {
-            $utilisateur->setRole("ROLE_ARTISAN");
-            $utilisateur->setRoles("ROLE_ARTISAN");
+            if ($role == "1") {
+                $utilisateur->setRole("ROLE_PARTICULIER");
+                $utilisateur->setRoles("ROLE_PARTICULIER");
+            } else {
+                $utilisateur->setRole("ROLE_ARTISAN");
+                $utilisateur->setRoles("ROLE_ARTISAN");
             }
 
             $factory = $this->get('security.encoder_factory');
             $encoder = $factory->getEncoder($utilisateur);
             $password = $encoder->encodePassword($user['password'], $utilisateur->getSalt());
             $tmp_name = $_FILES["fichier"]["tmp_name"];
-            $aux=explode('.',$_FILES["fichier"]["name"]);
-            $name = $user['mail'].'.'.$aux[1];
+            $aux = explode('.', $_FILES["fichier"]["name"]);
+            $name = $user['mail'] . '.' . $aux[1];
             $path_dir = $this->get('kernel')->getRootDir() . '/../web/Upload/Users/';
             move_uploaded_file($tmp_name, "$path_dir/$name");
-            $utilisateur->setPhotoUrl("Upload/Users/".$name);
+            $utilisateur->setPhotoUrl("Upload/Users/" . $name);
             $utilisateur->setPassword($password);
             $em->persist($utilisateur);
             $em->flush();
             
-            for ($i = 1; $i < sizeof($comp); $i++) {
-                $code= new \UserBundle\Entity\UserCode();
-                $c=$em->getRepository('UserBundle:CodePostal')->findById($comp[$i]);
+                            for ($i = 0; $i < sizeof($comp); $i++) {
+                    $competence = new \UserBundle\Entity\UserComp();
+                    $c = $em->getRepository('UserBundle:Competence')->findOneById($comp[$i]);
+                    $competence->setIdComp($c);
+                    $competence->setIdUser($utilisateur);
+                    $em->persist($competence);
+                    $em->flush();
+                }
+
+            for ($i = 0; $i < sizeof($codes); $i++) {
+                $code = new \UserBundle\Entity\UserCode();
+                $c = $em->getRepository('UserBundle:CodePostal')->findOneById($codes[$i]);
                 $code->setIdCode($c);
                 $code->setIdUser($utilisateur);
                 $em->persist($code);
@@ -130,10 +136,9 @@ class UtilisateurController extends Controller {
             }
             $utilisateurs = $em->getRepository('UserBundle:Utilisateur')->findAll();
 
-        return $this->render('utilisateur/index.html.twig', array(
-                    'utilisateurs' => $utilisateurs,
-        ));
-            
+            return $this->render('utilisateur/index.html.twig', array(
+                        'utilisateurs' => $utilisateurs,
+            ));
         }
         $competences = $em->getRepository('UserBundle:Competence')->findAll();
         $codes = $em->getRepository('UserBundle:CodePostal')->findAll();

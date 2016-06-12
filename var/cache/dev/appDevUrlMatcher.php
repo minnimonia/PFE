@@ -167,6 +167,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  '_route' => 'user_default_index',);
         }
 
+        // login
+        if ($pathinfo === '/login') {
+            return array (  '_controller' => 'UserBundle\\Controller\\LoginController::loginAction',  '_route' => 'login',);
+        }
+
         if (0 === strpos($pathinfo, '/utilisateur')) {
             // utilisateur_index
             if (rtrim($pathinfo, '/') === '/utilisateur') {
@@ -241,6 +246,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+        }
+
+        // logout
+        if ($pathinfo === '/logout') {
+            return array('_route' => 'logout');
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
