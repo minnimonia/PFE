@@ -15,8 +15,8 @@ class __TwigTemplate_a2d72fb3901ca3bbe53ab1f9c10a96f060ce9ca61da1561e40a4b010a6c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_759aab36af34dc0c6a8acc2049ec7f2fb3a07c7ad4c06f87e108ef6bb5e4ad6f = $this->env->getExtension("native_profiler");
-        $__internal_759aab36af34dc0c6a8acc2049ec7f2fb3a07c7ad4c06f87e108ef6bb5e4ad6f->enter($__internal_759aab36af34dc0c6a8acc2049ec7f2fb3a07c7ad4c06f87e108ef6bb5e4ad6f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "sidebar.html.twig"));
+        $__internal_2a0c6de3d584557871c9c93238f6a2ce416478d4b20d7e0471a7022e5ad4f635 = $this->env->getExtension("native_profiler");
+        $__internal_2a0c6de3d584557871c9c93238f6a2ce416478d4b20d7e0471a7022e5ad4f635->enter($__internal_2a0c6de3d584557871c9c93238f6a2ce416478d4b20d7e0471a7022e5ad4f635_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "sidebar.html.twig"));
 
         // line 1
         echo " <div class=\"navbar-default sidebar\" role=\"navigation\">
@@ -125,7 +125,7 @@ class __TwigTemplate_a2d72fb3901ca3bbe53ab1f9c10a96f060ce9ca61da1561e40a4b010a6c
                 <!-- /.sidebar-collapse -->
             </div>";
         
-        $__internal_759aab36af34dc0c6a8acc2049ec7f2fb3a07c7ad4c06f87e108ef6bb5e4ad6f->leave($__internal_759aab36af34dc0c6a8acc2049ec7f2fb3a07c7ad4c06f87e108ef6bb5e4ad6f_prof);
+        $__internal_2a0c6de3d584557871c9c93238f6a2ce416478d4b20d7e0471a7022e5ad4f635->leave($__internal_2a0c6de3d584557871c9c93238f6a2ce416478d4b20d7e0471a7022e5ad4f635_prof);
 
     }
 

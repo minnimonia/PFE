@@ -44,13 +44,6 @@ class Utilisateur implements UserInterface {
     private $adresse;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="codePostal", type="integer")
-     */
-    private $codePostal;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255)
@@ -184,27 +177,6 @@ class Utilisateur implements UserInterface {
         return $this->adresse;
     }
 
-    /**
-     * Set codePostal
-     *
-     * @param integer $codePostal
-     *
-     * @return Utilisateur
-     */
-    public function setCodePostal($codePostal) {
-        $this->codePostal = $codePostal;
-
-        return $this;
-    }
-
-    /**
-     * Get codePostal
-     *
-     * @return int
-     */
-    public function getCodePostal() {
-        return $this->codePostal;
-    }
 
     /**
      * Set mail

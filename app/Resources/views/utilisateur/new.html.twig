@@ -3,7 +3,7 @@
 {% block body %}
 
 
-    <form  name="adminbundle_personnelmarel" class="form-signup" id="form" action="{{ path('utilisateur_new')}}" class="form-signup"  method="POST">
+    <form  name="adminbundle_personnelmarel" class="form-signup" id="form" action="{{ path('utilisateur_new')}}" class="form-signup"  method="POST" enctype="multipart/form-data">
         <input type='hidden' id="addoredit" value="add">
         <div class="" id="adminbundle_personnelmarel">
 
@@ -67,7 +67,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
 
-                        <input type="file" id="utilisateur_photoUrl" name="utilisateur[photoUrl]" required="required" maxlength="255" placeholder="Lien de la photo" class="form-control" />
+                                <input type="file" name="fichier" id="fichier" multiple>
 
                     </div>
                 </div>

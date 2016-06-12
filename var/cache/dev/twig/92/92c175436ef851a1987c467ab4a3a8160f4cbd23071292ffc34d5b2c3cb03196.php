@@ -22,32 +22,32 @@ class __TwigTemplate_14143aa7ba812d9986c4715d7d1489b85ba3a5fab3b5fb45f30ff610483
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_109c396758cfc987a961a2282458989d712b3e4e7ae7f3ed36cfb399cdc445a6 = $this->env->getExtension("native_profiler");
-        $__internal_109c396758cfc987a961a2282458989d712b3e4e7ae7f3ed36cfb399cdc445a6->enter($__internal_109c396758cfc987a961a2282458989d712b3e4e7ae7f3ed36cfb399cdc445a6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "utilisateur/index.html.twig"));
+        $__internal_048659885370a832c6dd54b0cf3ce6fe571018de3b74f90796c434280e335760 = $this->env->getExtension("native_profiler");
+        $__internal_048659885370a832c6dd54b0cf3ce6fe571018de3b74f90796c434280e335760->enter($__internal_048659885370a832c6dd54b0cf3ce6fe571018de3b74f90796c434280e335760_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "utilisateur/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_109c396758cfc987a961a2282458989d712b3e4e7ae7f3ed36cfb399cdc445a6->leave($__internal_109c396758cfc987a961a2282458989d712b3e4e7ae7f3ed36cfb399cdc445a6_prof);
+        $__internal_048659885370a832c6dd54b0cf3ce6fe571018de3b74f90796c434280e335760->leave($__internal_048659885370a832c6dd54b0cf3ce6fe571018de3b74f90796c434280e335760_prof);
 
     }
 
     // line 2
     public function block_pageheader($context, array $blocks = array())
     {
-        $__internal_2985ff58252bc8771298e9bcbaaace5abddb0bde70c0937fafd01592e3036c8a = $this->env->getExtension("native_profiler");
-        $__internal_2985ff58252bc8771298e9bcbaaace5abddb0bde70c0937fafd01592e3036c8a->enter($__internal_2985ff58252bc8771298e9bcbaaace5abddb0bde70c0937fafd01592e3036c8a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "pageheader"));
+        $__internal_b6d2cb7751e1860e39e60a3e9871aacce475bc1f3d8d9dd8336f642c4b90c2f8 = $this->env->getExtension("native_profiler");
+        $__internal_b6d2cb7751e1860e39e60a3e9871aacce475bc1f3d8d9dd8336f642c4b90c2f8->enter($__internal_b6d2cb7751e1860e39e60a3e9871aacce475bc1f3d8d9dd8336f642c4b90c2f8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "pageheader"));
 
         echo "Liste des utilisateurs";
         
-        $__internal_2985ff58252bc8771298e9bcbaaace5abddb0bde70c0937fafd01592e3036c8a->leave($__internal_2985ff58252bc8771298e9bcbaaace5abddb0bde70c0937fafd01592e3036c8a_prof);
+        $__internal_b6d2cb7751e1860e39e60a3e9871aacce475bc1f3d8d9dd8336f642c4b90c2f8->leave($__internal_b6d2cb7751e1860e39e60a3e9871aacce475bc1f3d8d9dd8336f642c4b90c2f8_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_deaae6db1137014c97d053026ec309119f32ea5eaba792cd67986e3ff26fe46b = $this->env->getExtension("native_profiler");
-        $__internal_deaae6db1137014c97d053026ec309119f32ea5eaba792cd67986e3ff26fe46b->enter($__internal_deaae6db1137014c97d053026ec309119f32ea5eaba792cd67986e3ff26fe46b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_6fe2d4dddea31b363b0a5c55354613db73ba9be3df334979ef58d6b5db0acdb2 = $this->env->getExtension("native_profiler");
+        $__internal_6fe2d4dddea31b363b0a5c55354613db73ba9be3df334979ef58d6b5db0acdb2->enter($__internal_6fe2d4dddea31b363b0a5c55354613db73ba9be3df334979ef58d6b5db0acdb2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "
@@ -57,62 +57,52 @@ class __TwigTemplate_14143aa7ba812d9986c4715d7d1489b85ba3a5fab3b5fb45f30ff610483
                 <th>Prenom</th>
                 <th>Nom</th>
                 <th>Adresse</th>
-                <th>Codepostal</th>
                 <th>Mail</th>
                 <th>Tel</th>
-                <th>Photourl</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         ";
-        // line 19
+        // line 17
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["utilisateurs"]) ? $context["utilisateurs"] : $this->getContext($context, "utilisateurs")));
         foreach ($context['_seq'] as $context["_key"] => $context["utilisateur"]) {
-            // line 20
+            // line 18
             echo "            <tr>
                 <td><a href=\"";
-            // line 21
+            // line 19
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("utilisateur_show", array("id" => $this->getAttribute($context["utilisateur"], "id", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["utilisateur"], "prenom", array()), "html", null, true);
             echo "</a></td>
                 <td>";
-            // line 22
+            // line 20
             echo twig_escape_filter($this->env, $this->getAttribute($context["utilisateur"], "nom", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 23
+            // line 21
             echo twig_escape_filter($this->env, $this->getAttribute($context["utilisateur"], "adresse", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 24
-            echo twig_escape_filter($this->env, $this->getAttribute($context["utilisateur"], "codePostal", array()), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 25
+            // line 22
             echo twig_escape_filter($this->env, $this->getAttribute($context["utilisateur"], "mail", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 26
+            // line 23
             echo twig_escape_filter($this->env, $this->getAttribute($context["utilisateur"], "tel", array()), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 27
-            echo twig_escape_filter($this->env, $this->getAttribute($context["utilisateur"], "photoUrl", array()), "html", null, true);
             echo "</td>
                 <td>
                     <ul>
                         <li>
                             <a href=\"";
-            // line 31
+            // line 27
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("utilisateur_show", array("id" => $this->getAttribute($context["utilisateur"], "id", array()))), "html", null, true);
             echo "\">show</a>
                         </li>
                         <li>
                             <a href=\"";
-            // line 34
+            // line 30
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("utilisateur_edit", array("id" => $this->getAttribute($context["utilisateur"], "id", array()))), "html", null, true);
             echo "\">edit</a>
                         </li>
@@ -124,21 +114,21 @@ class __TwigTemplate_14143aa7ba812d9986c4715d7d1489b85ba3a5fab3b5fb45f30ff610483
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['utilisateur'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 40
+        // line 36
         echo "        </tbody>
     </table>
 
     <ul>
         <li>
             <a href=\"";
-        // line 45
+        // line 41
         echo $this->env->getExtension('routing')->getPath("utilisateur_new");
         echo "\">Create a new entry</a>
         </li>
     </ul>
 ";
         
-        $__internal_deaae6db1137014c97d053026ec309119f32ea5eaba792cd67986e3ff26fe46b->leave($__internal_deaae6db1137014c97d053026ec309119f32ea5eaba792cd67986e3ff26fe46b_prof);
+        $__internal_6fe2d4dddea31b363b0a5c55354613db73ba9be3df334979ef58d6b5db0acdb2->leave($__internal_6fe2d4dddea31b363b0a5c55354613db73ba9be3df334979ef58d6b5db0acdb2_prof);
 
     }
 
@@ -154,7 +144,7 @@ class __TwigTemplate_14143aa7ba812d9986c4715d7d1489b85ba3a5fab3b5fb45f30ff610483
 
     public function getDebugInfo()
     {
-        return array (  135 => 45,  128 => 40,  116 => 34,  110 => 31,  103 => 27,  99 => 26,  95 => 25,  91 => 24,  87 => 23,  83 => 22,  77 => 21,  74 => 20,  70 => 19,  53 => 4,  47 => 3,  35 => 2,  11 => 1,);
+        return array (  125 => 41,  118 => 36,  106 => 30,  100 => 27,  93 => 23,  89 => 22,  85 => 21,  81 => 20,  75 => 19,  72 => 18,  68 => 17,  53 => 4,  47 => 3,  35 => 2,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -167,10 +157,8 @@ class __TwigTemplate_14143aa7ba812d9986c4715d7d1489b85ba3a5fab3b5fb45f30ff610483
 /*                 <th>Prenom</th>*/
 /*                 <th>Nom</th>*/
 /*                 <th>Adresse</th>*/
-/*                 <th>Codepostal</th>*/
 /*                 <th>Mail</th>*/
 /*                 <th>Tel</th>*/
-/*                 <th>Photourl</th>*/
 /*                 <th>Actions</th>*/
 /*             </tr>*/
 /*         </thead>*/
@@ -180,10 +168,8 @@ class __TwigTemplate_14143aa7ba812d9986c4715d7d1489b85ba3a5fab3b5fb45f30ff610483
 /*                 <td><a href="{{ path('utilisateur_show', { 'id': utilisateur.id }) }}">{{ utilisateur.prenom }}</a></td>*/
 /*                 <td>{{ utilisateur.nom }}</td>*/
 /*                 <td>{{ utilisateur.adresse }}</td>*/
-/*                 <td>{{ utilisateur.codePostal }}</td>*/
 /*                 <td>{{ utilisateur.mail }}</td>*/
 /*                 <td>{{ utilisateur.tel }}</td>*/
-/*                 <td>{{ utilisateur.photoUrl }}</td>*/
 /*                 <td>*/
 /*                     <ul>*/
 /*                         <li>*/

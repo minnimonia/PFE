@@ -64,10 +64,10 @@ class Utilisateur extends \UserBundle\Entity\Utilisateur implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'prenom', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'nom', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'adresse', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'codePostal', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'mail', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'tel', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'photoUrl', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'role', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'roles', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'username'];
+            return ['__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'prenom', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'nom', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'adresse', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'mail', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'tel', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'photoUrl', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'role', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'roles', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'username'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'prenom', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'nom', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'adresse', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'codePostal', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'mail', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'tel', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'photoUrl', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'role', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'roles', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'username'];
+        return ['__isInitialized__', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'id', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'prenom', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'nom', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'adresse', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'mail', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'tel', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'photoUrl', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'password', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'salt', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'role', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'roles', '' . "\0" . 'UserBundle\\Entity\\Utilisateur' . "\0" . 'username'];
     }
 
     /**
@@ -263,28 +263,6 @@ class Utilisateur extends \UserBundle\Entity\Utilisateur implements \Doctrine\OR
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdresse', []);
 
         return parent::getAdresse();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setCodePostal($codePostal)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCodePostal', [$codePostal]);
-
-        return parent::setCodePostal($codePostal);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getCodePostal()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCodePostal', []);
-
-        return parent::getCodePostal();
     }
 
     /**

@@ -64,16 +64,15 @@ class UtilisateurController extends Controller {
                         for ($i = 1; $i < sizeof($resultats); $i++) {
                             $qb3->orWhere("w.id = $resultats[$i]");
                         }
-                        
-                       $tableau = $qb3->getQuery()->getResult();
+
+                        $tableau = $qb3->getQuery()->getResult();
                     }
                 }
             }
-        return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes, 'tableau' => $tableau));
+            return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes, 'tableau' => $tableau));
         }
 
         return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes));
-        
     }
 
     /**
@@ -87,10 +86,54 @@ class UtilisateurController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $user = $request->request->get('utilisateur');
         $comp = $request->request->get('comp');
+        $code = $request->request->get('code');
+        $role=$request->request->get('role');
+        
         if ($user != null) {
-            var_dump($user);
-            var_dump($comp);
-            exit();
+            $utilisateur = new Utilisateur();
+            $utilisateur->setAdresse($user['adresse']);
+            $utilisateur->setNom($user['nom']);
+            $utilisateur->setPrenom($user['prenom']);
+            $utilisateur->setUsername($user['prenom']);
+            $utilisateur->setMail($user['mail']);
+            $utilisateur->setTel($user['tel']);
+            if($role=="1")
+            {
+            $utilisateur->setRole("ROLE_PARTICULIER");
+            $utilisateur->setRoles("ROLE_PARTICULIER");
+            }else
+            {
+            $utilisateur->setRole("ROLE_ARTISAN");
+            $utilisateur->setRoles("ROLE_ARTISAN");
+            }
+
+            $factory = $this->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($utilisateur);
+            $password = $encoder->encodePassword($user['password'], $utilisateur->getSalt());
+            $tmp_name = $_FILES["fichier"]["tmp_name"];
+            $aux=explode('.',$_FILES["fichier"]["name"]);
+            $name = $user['mail'].'.'.$aux[1];
+            $path_dir = $this->get('kernel')->getRootDir() . '/../web/Upload/Users/';
+            move_uploaded_file($tmp_name, "$path_dir/$name");
+            $utilisateur->setPhotoUrl("Upload/Users/".$name);
+            $utilisateur->setPassword($password);
+            $em->persist($utilisateur);
+            $em->flush();
+            
+            for ($i = 1; $i < sizeof($comp); $i++) {
+                $code= new \UserBundle\Entity\UserCode();
+                $c=$em->getRepository('UserBundle:CodePostal')->findById($comp[$i]);
+                $code->setIdCode($c);
+                $code->setIdUser($utilisateur);
+                $em->persist($code);
+                $em->flush();
+            }
+            $utilisateurs = $em->getRepository('UserBundle:Utilisateur')->findAll();
+
+        return $this->render('utilisateur/index.html.twig', array(
+                    'utilisateurs' => $utilisateurs,
+        ));
+            
         }
         $competences = $em->getRepository('UserBundle:Competence')->findAll();
         $codes = $em->getRepository('UserBundle:CodePostal')->findAll();

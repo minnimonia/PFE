@@ -15,8 +15,8 @@ class __TwigTemplate_70e6be23bd0f0b574d89f06754aecb5e89643cc740d6b393be38b94c175
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e6a4ad3364b9c7ea306eef5a89f477e80a912829d242fe1fe37b44842ccb0e67 = $this->env->getExtension("native_profiler");
-        $__internal_e6a4ad3364b9c7ea306eef5a89f477e80a912829d242fe1fe37b44842ccb0e67->enter($__internal_e6a4ad3364b9c7ea306eef5a89f477e80a912829d242fe1fe37b44842ccb0e67_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "header.html.twig"));
+        $__internal_880b9e621929925cfed023dd61ed0e19c912d7a0f46772ffab7678a05b43386c = $this->env->getExtension("native_profiler");
+        $__internal_880b9e621929925cfed023dd61ed0e19c912d7a0f46772ffab7678a05b43386c->enter($__internal_880b9e621929925cfed023dd61ed0e19c912d7a0f46772ffab7678a05b43386c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "header.html.twig"));
 
         // line 1
         echo "<div class=\"navbar-header\">
@@ -256,7 +256,7 @@ class __TwigTemplate_70e6be23bd0f0b574d89f06754aecb5e89643cc740d6b393be38b94c175
     <!-- /.dropdown -->
 </ul>";
         
-        $__internal_e6a4ad3364b9c7ea306eef5a89f477e80a912829d242fe1fe37b44842ccb0e67->leave($__internal_e6a4ad3364b9c7ea306eef5a89f477e80a912829d242fe1fe37b44842ccb0e67_prof);
+        $__internal_880b9e621929925cfed023dd61ed0e19c912d7a0f46772ffab7678a05b43386c->leave($__internal_880b9e621929925cfed023dd61ed0e19c912d7a0f46772ffab7678a05b43386c_prof);
 
     }
 

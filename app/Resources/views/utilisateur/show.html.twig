@@ -17,10 +17,6 @@
                 <td>{{ utilisateur.adresse }}</td>
             </tr>
             <tr>
-                <th>Codepostal</th>
-                <td>{{ utilisateur.codePostal }}</td>
-            </tr>
-            <tr>
                 <th>Mail</th>
                 <td>{{ utilisateur.mail }}</td>
             </tr>
@@ -29,8 +25,10 @@
                 <td>{{ utilisateur.tel }}</td>
             </tr>
             <tr>
-                <th>Photourl</th>
-                <td>{{ utilisateur.photoUrl }}</td>
+                <th>Photo</th>
+                <td>
+                    <img src="{{ asset(utilisateur.photourl) }}">
+                </td>
             </tr>
         </tbody>
     </table>
