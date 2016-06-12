@@ -67,13 +67,14 @@ class UtilisateurController extends Controller {
                     }
                 }
             }
+        return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes, 'tableau' => $tableau));
         }
 
  
         $competences = $em->getRepository('UserBundle:Competence')->findAll();
         $codes = $em->getRepository('UserBundle:CodePostal')->findAll();
-        return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes, 'tableau' => $tableau,
-        ));
+        return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes));
+        
     }
 
     /**

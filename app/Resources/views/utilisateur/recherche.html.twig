@@ -35,6 +35,7 @@
     </ul>
 
     </form>
+            {% if tableau is defined %}
     <table class="table table-striped table-bordered table-hover">
         <tbody>
         {% for tab in tableau %}
@@ -69,6 +70,7 @@
         {% endfor %}
         </tbody>
     </table>
+        {% endif %}
 
 {% endblock %}
 {% block javascript %}
