@@ -15,8 +15,8 @@ class __TwigTemplate_70e6be23bd0f0b574d89f06754aecb5e89643cc740d6b393be38b94c175
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2d33c49fe8dd48b2b4c8c7edb1ed289dd72cb1cdfb72ca12a115e273cab1fa71 = $this->env->getExtension("native_profiler");
-        $__internal_2d33c49fe8dd48b2b4c8c7edb1ed289dd72cb1cdfb72ca12a115e273cab1fa71->enter($__internal_2d33c49fe8dd48b2b4c8c7edb1ed289dd72cb1cdfb72ca12a115e273cab1fa71_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "header.html.twig"));
+        $__internal_e6a4ad3364b9c7ea306eef5a89f477e80a912829d242fe1fe37b44842ccb0e67 = $this->env->getExtension("native_profiler");
+        $__internal_e6a4ad3364b9c7ea306eef5a89f477e80a912829d242fe1fe37b44842ccb0e67->enter($__internal_e6a4ad3364b9c7ea306eef5a89f477e80a912829d242fe1fe37b44842ccb0e67_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "header.html.twig"));
 
         // line 1
         echo "<div class=\"navbar-header\">
@@ -226,24 +226,37 @@ class __TwigTemplate_70e6be23bd0f0b574d89f06754aecb5e89643cc740d6b393be38b94c175
             <i class=\"fa fa-user fa-fw\"></i>  <i class=\"fa fa-caret-down\"></i>
         </a>
         <ul class=\"dropdown-menu dropdown-user\">
-            <li><a href=";
+            ";
         // line 208
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("utilisateur_show", array("id" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "id", array()))), "html", null, true);
-        echo "><i class=\"fa fa-user fa-fw\"></i> Profil</a>
+        if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "usr", array(), "any", false, true), "id", array(), "any", true, true)) {
+            // line 209
+            echo "            <li><a href=";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("utilisateur_show", array("id" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "id", array()))), "html", null, true);
+            echo "><i class=\"fa fa-user fa-fw\"></i> Profil</a>
             </li>
             <li class=\"divider\"></li>
             <li><a href=\"";
-        // line 211
-        echo $this->env->getExtension('routing')->getPath("logout");
-        echo "\"><i class=\"fa fa-sign-out fa-fw\"></i> Se deconnecter</a>
+            // line 212
+            echo $this->env->getExtension('routing')->getPath("logout");
+            echo "\"><i class=\"fa fa-sign-out fa-fw\"></i> Se deconnecter</a>
             </li>
-        </ul>
+            ";
+        } else {
+            // line 215
+            echo "                <li><a href=\"";
+            echo $this->env->getExtension('routing')->getPath("login");
+            echo "\"><i class=\"fa fa-sign-out fa-fw\"></i> Se connecter</a>
+            </li>
+            ";
+        }
+        // line 218
+        echo "        </ul>
         <!-- /.dropdown-user -->
     </li>
     <!-- /.dropdown -->
 </ul>";
         
-        $__internal_2d33c49fe8dd48b2b4c8c7edb1ed289dd72cb1cdfb72ca12a115e273cab1fa71->leave($__internal_2d33c49fe8dd48b2b4c8c7edb1ed289dd72cb1cdfb72ca12a115e273cab1fa71_prof);
+        $__internal_e6a4ad3364b9c7ea306eef5a89f477e80a912829d242fe1fe37b44842ccb0e67->leave($__internal_e6a4ad3364b9c7ea306eef5a89f477e80a912829d242fe1fe37b44842ccb0e67_prof);
 
     }
 
@@ -259,7 +272,7 @@ class __TwigTemplate_70e6be23bd0f0b574d89f06754aecb5e89643cc740d6b393be38b94c175
 
     public function getDebugInfo()
     {
-        return array (  237 => 211,  231 => 208,  22 => 1,);
+        return array (  253 => 218,  246 => 215,  240 => 212,  233 => 209,  231 => 208,  22 => 1,);
     }
 }
 /* <div class="navbar-header">*/
@@ -469,11 +482,16 @@ class __TwigTemplate_70e6be23bd0f0b574d89f06754aecb5e89643cc740d6b393be38b94c175
 /*             <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>*/
 /*         </a>*/
 /*         <ul class="dropdown-menu dropdown-user">*/
+/*             {% if app.usr.id is defined %}*/
 /*             <li><a href={{ path('utilisateur_show', {'id': app.user.id}) }}><i class="fa fa-user fa-fw"></i> Profil</a>*/
 /*             </li>*/
 /*             <li class="divider"></li>*/
 /*             <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Se deconnecter</a>*/
 /*             </li>*/
+/*             {% else %}*/
+/*                 <li><a href="{{ path('login') }}"><i class="fa fa-sign-out fa-fw"></i> Se connecter</a>*/
+/*             </li>*/
+/*             {% endif %}*/
 /*         </ul>*/
 /*         <!-- /.dropdown-user -->*/
 /*     </li>*/

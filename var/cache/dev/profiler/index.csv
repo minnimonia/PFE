@@ -97,3 +97,12 @@ fe9c78,::1,GET,http://localhost/pfe/web/app_dev.php/utilisateur/,1465728529,,200
 dca518,::1,GET,http://localhost/pfe/web/app_dev.php/utilisateur/,1465728712,,200
 ba09d5,::1,GET,http://localhost/pfe/web/app_dev.php/logout,1465728716,,302
 80b373,::1,GET,http://localhost/pfe/web/app_dev.php/login,1465728716,,200
+a85484,::1,GET,http://localhost/pfe/web/app_dev.php/utilisateur/,1465728806,9ce5da,200
+9ce5da,::1,GET,http://localhost/pfe/web/app_dev.php/utilisateur/,1465728806,,500
+650d32,::1,GET,http://localhost/pfe/web/app_dev.php/utilisateur/,1465728926,,200
+f46bca,::1,GET,http://localhost/pfe/web/app_dev.php/utilisateur/,1465728954,,200
+3d4121,::1,GET,http://localhost/pfe/web/app_dev.php/utilisateur/,1465728963,,200
+eb3c97,::1,GET,http://localhost/pfe/web/app_dev.php/login,1465728965,,200
+47059c,::1,POST,http://localhost/pfe/web/app_dev.php/login,1465728966,,302
+cd7640,::1,GET,http://localhost/pfe/web/app_dev.php/utilisateur,1465728967,,301
+7b701a,::1,GET,http://localhost/pfe/web/app_dev.php/utilisateur/,1465728968,,200

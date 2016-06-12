@@ -205,11 +205,16 @@
             <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
+            {% if app.usr.id is defined %}
             <li><a href={{ path('utilisateur_show', {'id': app.user.id}) }}><i class="fa fa-user fa-fw"></i> Profil</a>
             </li>
             <li class="divider"></li>
             <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Se deconnecter</a>
             </li>
+            {% else %}
+                <li><a href="{{ path('login') }}"><i class="fa fa-sign-out fa-fw"></i> Se connecter</a>
+            </li>
+            {% endif %}
         </ul>
         <!-- /.dropdown-user -->
     </li>
