@@ -41,23 +41,28 @@ class ChantierController extends Controller
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
-    {
-        $chantier = new Chantier();
-        $form = $this->createForm('PlanningBundle\Form\ChantierType', $chantier);
-        $form->handleRequest($request);
+    {   
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $chan = $request->request->get('chantier');
+        if ($chan != null) {
+            $chantier = new chantier();
+            $chantier->setTitre($chan['titre']);
+            $chantier->setDescription($chan['description']);
+            $chantier->setAdresse($chan['adresse']);
+            $chantier->setDebut(date_create($chan['debut']));
+            $chantier->setFin(date_create($chan['fin']));
+            $chantier->setIdArtisan($user);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $par = $em->getRepository('UserBundle:Utilisateur')->findOneBy(array('mail' => $chan['idParticulier']));
+            $chantier->setIdParticulier($par);
             $em->persist($chantier);
             $em->flush();
-
-            return $this->redirectToRoute('chantier_show', array('id' => $chantier->getId()));
+        
+         
         }
 
-        return $this->render('chantier/new.html.twig', array(
-            'chantier' => $chantier,
-            'form' => $form->createView(),
-        ));
+        return $this->render('chantier/new.html.twig');
     }
 
     /**

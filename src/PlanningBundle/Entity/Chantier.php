@@ -25,7 +25,9 @@ class Chantier
      * @var \Utilisateur
      *
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Utilisateur")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="idArtisan", referencedColumnName="id")
+     * })
      */
     private $idArtisan;
 

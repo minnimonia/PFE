@@ -41,22 +41,23 @@ class TacheController extends Controller
      */
     public function newAction(Request $request)
     {
-        $tache = new Tache();
-        $form = $this->createForm('PlanningBundle\Form\TacheType', $tache);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $ta = $request->request->get('tache');
+        if ($ta != null) {
+            $tache = new tache();
+            $tache->setTitre($ta['titre']);
+            $tache->setDescription($ta['description']);
+            $tache->setDebut(date_create($ta['debut']));
+            $tache->setFin(date_create($ta['fin']));
+            
+            $t = $em->getRepository('PlanningBundle:Chantier')->findOneBy(array('id' => $ta['idChantier']));
+            $tache->setIdChantier($t);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($tache);
-            $em->flush();
-
-            return $this->redirectToRoute('tache_show', array('id' => $tache->getId()));
+            $em->flush(); 
+         
         }
-
-        return $this->render('tache/new.html.twig', array(
-            'tache' => $tache,
-            'form' => $form->createView(),
-        ));
+        return $this->render('tache/new.html.twig');
     }
 
     /**

@@ -1,20 +1,68 @@
 {% extends 'base.html.twig' %}
-{% block pageheader %}Créer une tache{% endblock %}
+{% block pageheader %}Ajouter une tache{% endblock %}
 {% block body %}
 
-    {{ form_start(form) }}
-    {{ form_widget(form.titre, {'attr': {'placeholder': 'Titre de la tache', 'class' : 'form-control'}}) }}
-    {{ form_widget(form.description, {'attr': {'placeholder': 'Description de la tache', 'class' : 'form-control'}}) }}
-    {{ form_row(form.debut) }}
-    {{ form_row(form.fin) }}
-    {{ form_widget(form.idChantier, {'attr': {'placeholder': 'Chantier correspondant', 'class' : 'form-control'}}) }}
-    {{ form_widget(form) }}
-    <input type="submit" value="Créer" class="btn btn-primary"/>
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('tache_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <form  name="adminbundle_personnelmarel" class="form-signup" id="form" action="{{ path('tache_new')}}" class="form-signup"  method="POST" enctype="multipart/form-data">
+        <input type='hidden' id="addoredit" value="add">
+        <div class="" id="adminbundle_personnelmarel">
+            
+            <div class="row form-group" >
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        
+
+                        <input type="text" id="tache_idChantier" name="tache[idChantier]" required="required" maxlength="255" placeholder="Code chantier" class="form-control" />                            </div>
+
+                </div>
+            </div>
+            
+            <div class="row form-group" >
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        
+
+                        <input type="text" id="tache_titre" name="tache[titre]" required="required" maxlength="255" placeholder="Titre" class="form-control" />                            </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+
+                        <input type="text" id="tache_description" name="tache[description]" required="required" maxlength="255" placeholder="Description" class="form-control" /> 
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group" >
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Date de début </label>
+                        <input type="text" id="tache_debut" name="tache[debut]" required="required" maxlength="255" placeholder="01-01-2000" class="form-control" />
+
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class=" form-group">
+                        <label>Date de fin </label>
+                        <input type="text" id="tache_fin" name="tache[fin]" required="required" maxlength="255" placeholder="01-01-2000" class="form-control" />
+                        <!--<div id="keyboard_lieaunaissance" style="display:none;"></div>-->
+
+                    </div>
+                </div>
+            </div>
+            
+            <center>
+                <button type="submit" class="btn btn-primary">Créer 
+                    <span class="ti-save"></span>
+                </button>
+                <a href="{{path('tache_index')}}" id="suipelbundle_refgouvernorat_submit" name="suipelbundle_refgouvernorat[submit]" class="btn btn-default btn-wide">Retour 
+                    <span class="ti-back-right"></span>
+                </a>
+            </center>
+
+        </div>
+    </form>
 {% endblock %}
+ 

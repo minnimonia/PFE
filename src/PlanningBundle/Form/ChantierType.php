@@ -18,8 +18,8 @@ class ChantierType extends AbstractType
         $builder
             ->add('titre')
             ->add('description')
-            ->add('debut', DateType::class)
-            ->add('fin', DateType::class)
+            ->add('debut')
+            ->add('fin')
             ->add('adresse')
             ->add('idArtisan')
             ->add('idParticulier')

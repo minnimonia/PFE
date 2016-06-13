@@ -1,15 +1,77 @@
 {% extends 'base.html.twig' %}
-{% block pageheader %}Créer un Chantier{% endblock %}
+{% block pageheader %}Ajouter un chantier{% endblock %}
 {% block body %}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('chantier_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <form  name="adminbundle_personnelmarel" class="form-signup" id="form" action="{{ path('chantier_new')}}" class="form-signup"  method="POST" enctype="multipart/form-data">
+        <input type='hidden' id="addoredit" value="add">
+        <div class="" id="adminbundle_personnelmarel">
+
+            <div class="row form-group" >
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        
+
+                        <input type="text" id="chantier_titre" name="chantier[titre]" required="required" maxlength="255" placeholder="Titre" class="form-control" />                            </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+
+                        <input type="text" id="chantier_description" name="chantier[description]" required="required" maxlength="255" placeholder="Description" class="form-control" /> 
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-sm-6">
+                    <div class="form-group">
+
+                        <input type="text" id="chantier_adresse" name="chantier[adresse]" required="required" maxlength="255" placeholder="Adresse" class="form-control" />
+                        <!--<div id="keyboard" style=""></div>-->
+
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group" >
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Date de début </label>
+                        <input type="text" id="chantier_debut" name="chantier[debut]" required="required" maxlength="255" placeholder="01-01-2000" class="form-control" />
+
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class=" form-group">
+                        <label>Date de fin </label>
+                        <input type="text" id="chantier_fin" name="chantier[fin]" required="required" maxlength="255" placeholder="01-01-2000" class="form-control" />
+                        <!--<div id="keyboard_lieaunaissance" style="display:none;"></div>-->
+
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-6">
+                    <div class="form-group">
+
+                        <input type="text" id="chantier_idParticulier" name="chantier[idParticulier]" required="required" maxlength="255" placeholder="Mail du particulier" class="form-control" />
+
+                    </div>
+                </div>
+            </div>
+
+            <center>
+                <button type="submit" class="btn btn-primary">Créer 
+                    <span class="ti-save"></span>
+                </button>
+                <a href="{{path('chantier_index')}}" id="suipelbundle_refgouvernorat_submit" name="suipelbundle_refgouvernorat[submit]" class="btn btn-default btn-wide">Retour 
+                    <span class="ti-back-right"></span>
+                </a>
+            </center>
+
+        </div>
+    </form>
 {% endblock %}
+ 
