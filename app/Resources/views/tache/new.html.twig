@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block pageheader %}Créer une tache{% endblock %}
+{% block body %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form.titre, {'attr': {'placeholder': 'Titre de la tache', 'class' : 'form-control'}}) }}
+    {{ form_widget(form.description, {'attr': {'placeholder': 'Description de la tache', 'class' : 'form-control'}}) }}
+    {{ form_row(form.debut) }}
+    {{ form_row(form.fin) }}
+    {{ form_widget(form.idChantier, {'attr': {'placeholder': 'Chantier correspondant', 'class' : 'form-control'}}) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Créer" class="btn btn-primary"/>
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('tache_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

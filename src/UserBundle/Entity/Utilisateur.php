@@ -348,17 +348,8 @@ class Utilisateur implements UserInterface {
         return array($this->role);
     }
 
-    public function findArtisanByParametres($data) {
-
-        $query = $this->createQueryBuilder('a');
-
-        $query->where('a.codePostal BETWEEN :codePostal AND :anneeProductionMax')
-                ->andWhere('a.competence = :competence')
-                ->setParameters(array(
-                    'codePostal' => $data['codePostal'],
-                    'competence' => $data['Compétence']));
-
-        return $query->getQuery()->getResult();
-    }
+    public function __toString() {
+    return "$this->id";
+}
 
 }

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block pageheader %}Détails tache{% endblock %}
+{% block body %}
+
+    <table class="table table-striped table-bordered table-hover">
+        <tbody>
+            <tr>
+                <th>Titre</th>
+                <td>{{ tache.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ tache.description }}</td>
+            </tr>
+            <tr>
+                <th>Debut</th>
+                <td>{% if tache.debut %}{{ tache.debut|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fin</th>
+                <td>{% if tache.fin %}{{ tache.fin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tache_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('tache_edit', { 'id': tache.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block pageheader %}Liste des chantiers{% endblock %}
+{% block body %}
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Debut</th>
+                <th>Fin</th>
+                <th>Adresse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chantier in chantiers %}
+            <tr>
+                <td><a href="{{ path('chantier_show', { 'id': chantier.id }) }}">{{ chantier.titre }}</a></td>
+                <td>{{ chantier.description }}</td>
+                <td>{% if chantier.debut %}{{ chantier.debut|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if chantier.fin %}{{ chantier.fin|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ chantier.adresse }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('chantier_show', { 'id': chantier.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('chantier_edit', { 'id': chantier.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('chantier_new') }}">Créer un nouveau chantier</a>
+        </li>
+    </ul>
+{% endblock %}

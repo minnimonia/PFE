@@ -34,7 +34,7 @@ class UtilisateurController extends Controller {
     }
 
     /**
-     * @Route("/recherche")
+     * @Route("/recherche", name="utilisateur_recherche")
      */
     public function rechercheAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
