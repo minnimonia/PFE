@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block pageheader %}Menu{% endblock %}
+{% block body %}
+
+    <table>
+        <tbody>
+
+            <tr><td><a href="{{ path('utilisateur_show', { 'id': utilisateur.id }) }}" class="btn btn-default btn-xs">Voir mon profil</a></td></tr>
+            <tr><td><a href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}" class="btn btn-default btn-xs">Modifier mon profil</a></td></tr>
+            <tr><td><a href="{{ path('utilisateur_recherche') }}" class="btn btn-default btn-xs">Chercher un artisan</a></td></tr>
+            <tr><td><a href="{{ path('chantier_maliste', { 'id': utilisateur.id }) }}"class="btn btn-default btn-xs">Voir mes chantiers</a></td></tr>  
+
+        </tbody>
+    </table>
+{% endblock %}

@@ -6,7 +6,6 @@
     {{ form_widget(edit_form.prenom, {'attr': {'placeholder': 'Prénom', 'class' : 'form-control'}}) }}
     {{ form_widget(edit_form.nom, {'attr': {'placeholder': 'Nom', 'class' : 'form-control'}}) }} 
     {{ form_widget(edit_form.adresse, {'attr': {'placeholder': 'Adresse', 'class' : 'form-control'}}) }}
-    {{ form_widget(edit_form.codePostal, {'attr': {'placeholder': 'Code Postal', 'class' : 'form-control'}}) }}
     {{ form_widget(edit_form.mail, {'attr': {'placeholder': 'Mail', 'class' : 'form-control'}}) }}
     {{ form_widget(edit_form.tel, {'attr': {'placeholder': 'Téléphone', 'class' : 'form-control'}}) }}
     {{ form_widget(edit_form.photoUrl, {'attr': {'placeholder': 'Lien de la photo', 'class' : 'form-control'}}) }}
@@ -15,14 +14,5 @@
        <input type="submit" value="Modifier" class="btn btn-primary"/>
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('utilisateur_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    
 {% endblock %}

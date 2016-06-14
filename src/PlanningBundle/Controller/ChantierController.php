@@ -33,6 +33,26 @@ class ChantierController extends Controller
             'chantiers' => $chantiers,
         ));
     }
+    
+    /**
+     * Lists my Chantier entities.
+     *
+     * @Route("/maliste", name="chantier_maliste")
+     * @Method("GET")
+     */
+    public function mineAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if($user->getRole()=="ROLE_ARTISAN"){
+        $chantiers = $em->getRepository('PlanningBundle:Chantier')->findBy(array('idArtisan' => $user->getId()));}
+        else {
+        $chantiers = $em->getRepository('PlanningBundle:Chantier')->findBy(array('idParticulier' => $user->getId()));    
+        }
+        return $this->render('chantier/maliste.html.twig', array(
+            'chantiers' => $chantiers,
+        ));
+    }
 
     /**
      * Creates a new Chantier entity.
@@ -74,10 +94,12 @@ class ChantierController extends Controller
     public function showAction(Chantier $chantier)
     {
         $deleteForm = $this->createDeleteForm($chantier);
-
+        
+        $em = $this->getDoctrine()->getManager();
+        $taches = $em->getRepository('PlanningBundle:Tache')->findBy(array('idChantier' => $chantier->getId()),array('debut' => 'desc'));
         return $this->render('chantier/show.html.twig', array(
             'chantier' => $chantier,
-            'delete_form' => $deleteForm->createView(),
+            'delete_form' => $deleteForm->createView(),'taches' => $taches
         ));
     }
 

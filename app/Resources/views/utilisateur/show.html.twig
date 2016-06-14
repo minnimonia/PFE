@@ -33,17 +33,19 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('utilisateur_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}">Edit</a>
-        </li>
-        <li>
+    <div>
+        <div>
+            <a href="{{ path('utilisateur_edit', { 'id': utilisateur.id }) }}"class="btn btn-default btn-xs">Modifier</a>
+        </div>
+        <div>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer" class="btn btn-default btn-xs">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+
+        <div>
+            <a href="{{ path('chantier_maliste', { 'id': utilisateur.id }) }}"class="btn btn-default btn-xs">Mes chantiers</a>
+        </div>
+
+    </div>
 {% endblock %}

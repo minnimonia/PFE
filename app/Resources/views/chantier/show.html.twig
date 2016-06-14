@@ -5,6 +5,10 @@
     <table class="table table-striped table-bordered table-hover">
         <tbody>
             <tr>
+                <th>Code chantier</th>
+                <td>{{ chantier.id }}</td>
+            </tr>
+            <tr>
                 <th>Titre</th>
                 <td>{{ chantier.titre }}</td>
             </tr>
@@ -27,17 +31,31 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('chantier_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('chantier_edit', { 'id': chantier.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Debut</th>
+                <th>Fin</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tache in taches %}
+            <tr>
+                <td><a href="{{ path('tache_show', { 'id': tache.id }) }}">{{ tache.titre }}</a></td>
+                <td>{{ tache.description }}</td>
+                <td>{% if tache.debut %}{{ tache.debut|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tache.fin %}{{ tache.fin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>      
+                    
+    <div>
+        
+        <a href="{{ path('tache_new') }}"class="btn btn-primary btn-lg pull-right">Ajouter une tâche</a>
+        
+    </div>
+
 {% endblock %}

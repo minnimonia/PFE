@@ -34,6 +34,18 @@ class UtilisateurController extends Controller {
     }
 
     /**
+     * Lists the menu.
+     *
+     * @Route("/menu", name="utilisateur_menu")
+     * @Method("GET")
+     */
+    public function menuAction() {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        return $this->render('Utilisateur/menu.html.twig', array('utilisateur' => $user));
+    }
+    
+    /**
      * @Route("/recherche", name="utilisateur_recherche")
      */
     public function rechercheAction(Request $request) {

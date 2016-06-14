@@ -43,6 +43,7 @@ class TacheController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $ta = $request->request->get('tache');
+        
         if ($ta != null) {
             $tache = new tache();
             $tache->setTitre($ta['titre']);
@@ -50,12 +51,16 @@ class TacheController extends Controller
             $tache->setDebut(date_create($ta['debut']));
             $tache->setFin(date_create($ta['fin']));
             
+            
             $t = $em->getRepository('PlanningBundle:Chantier')->findOneBy(array('id' => $ta['idChantier']));
             $tache->setIdChantier($t);
-
+            $taches = $em->getRepository('PlanningBundle:tache')->findBy(array('idChantier' => $ta['idChantier']));
             $em->persist($tache);
             $em->flush(); 
-         
+            
+            return $this->render('chantier/show.html.twig', array(
+            'chantier' => $t, 'taches' => $taches
+        ));
         }
         return $this->render('tache/new.html.twig');
     }
