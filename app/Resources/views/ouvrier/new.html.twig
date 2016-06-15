@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block pageheader %}Ajouter un ouvrier{% endblock %}
+{% block body %}
+    <form  name="adminbundle_personnelmarel" class="form-signup" id="form" action="{{ path('ouvrier_new', {'id':'1'})}}" class="form-signup"  method="POST" enctype="multipart/form-data">
+        <input type='hidden' id="addoredit" value="add">
+        <div class="" id="adminbundle_personnelmarel">
+
+            <div class="row form-group" >
+                <div class="col-sm-6">
+                    <div class="form-group ">
+                        <input type="text" id="ouvrier_nom" name="ouvrier[nom]" required="required" maxlength="255" placeholder="Nom" class="form-control" /> 
+                    </div>
+                </div>
+                <div class="col-sm-6">                   
+                    <div class="form-group ">
+                        <input type="text" id="ouvrier_prenom" name="ouvrier[prenom]" required="required" maxlength="255" placeholder="Prénom" class="form-control" />                           
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row form-group" >
+                <div class="col-sm-6">
+                    <div class="form-group ">
+
+                        <input type="text" id="ouvrier_mail" name="ouvrier[mail]" required="required" maxlength="255" placeholder="Mail" class="form-control" /> 
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+
+                        <input type="text" id="ouvrier_tel" name="ouvrier[tel]" required="required" maxlength="255" placeholder="Téléphone" class="form-control" /> 
+
+                    </div>
+                </div>
+            </div>
+
+
+            <center>
+                <button type="submit" class="btn btn-primary">Créer 
+                    <span class="ti-save"></span>
+                </button>
+                <a href="{{path('ouvrier_index')}}" id="suipelbundle_refgouvernorat_submit" name="suipelbundle_refgouvernorat[submit]" class="btn btn-default btn-wide">Retour 
+                    <span class="ti-back-right"></span>
+                </a>
+            </center>
+
+        </div>
+    </form>
+{% endblock %}

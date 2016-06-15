@@ -15,42 +15,40 @@ use UserBundle\Entity\Utilisateur;
  *
  * @Route("/chantier")
  */
-class ChantierController extends Controller
-{
+class ChantierController extends Controller {
+
     /**
      * Lists all Chantier entities.
      *
      * @Route("/", name="chantier_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $chantiers = $em->getRepository('PlanningBundle:Chantier')->findAll();
 
         return $this->render('chantier/index.html.twig', array(
-            'chantiers' => $chantiers,
+                    'chantiers' => $chantiers,
         ));
     }
-    
+
     /**
      * Lists my Chantier entities.
      *
      * @Route("/maliste", name="chantier_maliste")
      * @Method("GET")
      */
-    public function mineAction()
-    {
+    public function mineAction() {
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        if($user->getRole()=="ROLE_ARTISAN"){
-        $chantiers = $em->getRepository('PlanningBundle:Chantier')->findBy(array('idArtisan' => $user->getId()));}
-        else {
-        $chantiers = $em->getRepository('PlanningBundle:Chantier')->findBy(array('idParticulier' => $user->getId()));    
+        if ($user->getRole() == "ROLE_ARTISAN") {
+            $chantiers = $em->getRepository('PlanningBundle:Chantier')->findBy(array('idArtisan' => $user->getId()));
+        } else {
+            $chantiers = $em->getRepository('PlanningBundle:Chantier')->findBy(array('idParticulier' => $user->getId()));
         }
         return $this->render('chantier/maliste.html.twig', array(
-            'chantiers' => $chantiers,
+                    'chantiers' => $chantiers,
         ));
     }
 
@@ -60,8 +58,7 @@ class ChantierController extends Controller
      * @Route("/new", name="chantier_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {   
+    public function newAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $chan = $request->request->get('chantier');
@@ -78,8 +75,6 @@ class ChantierController extends Controller
             $chantier->setIdParticulier($par);
             $em->persist($chantier);
             $em->flush();
-        
-         
         }
 
         return $this->render('chantier/new.html.twig');
@@ -91,15 +86,14 @@ class ChantierController extends Controller
      * @Route("/{id}", name="chantier_show")
      * @Method("GET")
      */
-    public function showAction(Chantier $chantier)
-    {
+    public function showAction(Chantier $chantier) {
         $deleteForm = $this->createDeleteForm($chantier);
-        
+
         $em = $this->getDoctrine()->getManager();
-        $taches = $em->getRepository('PlanningBundle:Tache')->findBy(array('idChantier' => $chantier->getId()),array('debut' => 'desc'));
+        $taches = $em->getRepository('PlanningBundle:Tache')->findBy(array('idChantier' => $chantier->getId()), array('debut' => 'desc'));
         return $this->render('chantier/show.html.twig', array(
-            'chantier' => $chantier,
-            'delete_form' => $deleteForm->createView(),'taches' => $taches
+                    'chantier' => $chantier,
+                    'delete_form' => $deleteForm->createView(), 'taches' => $taches
         ));
     }
 
@@ -109,8 +103,7 @@ class ChantierController extends Controller
      * @Route("/{id}/edit", name="chantier_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Chantier $chantier)
-    {
+    public function editAction(Request $request, Chantier $chantier) {
         $deleteForm = $this->createDeleteForm($chantier);
         $editForm = $this->createForm('PlanningBundle\Form\ChantierType', $chantier);
         $editForm->handleRequest($request);
@@ -124,9 +117,9 @@ class ChantierController extends Controller
         }
 
         return $this->render('chantier/edit.html.twig', array(
-            'chantier' => $chantier,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'chantier' => $chantier,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -136,8 +129,7 @@ class ChantierController extends Controller
      * @Route("/{id}", name="chantier_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Chantier $chantier)
-    {
+    public function deleteAction(Request $request, Chantier $chantier) {
         $form = $this->createDeleteForm($chantier);
         $form->handleRequest($request);
 
@@ -157,12 +149,12 @@ class ChantierController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Chantier $chantier)
-    {
+    private function createDeleteForm(Chantier $chantier) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('chantier_delete', array('id' => $chantier->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('chantier_delete', array('id' => $chantier->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

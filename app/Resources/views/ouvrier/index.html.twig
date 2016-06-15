@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block pageheader %}Liste des ouvriers{% endblock %}
+{% block body %}
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Mail</th>
+                <th>Tel</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ouvrier in ouvriers %}
+            <tr>
+                <td><a href="{{ path('ouvrier_show', { 'id': ouvrier.id }) }}">{{ ouvrier.nom }}</a></td>
+                <td>{{ ouvrier.prenom }}</td>
+                <td>{{ ouvrier.mail }}</td>
+                <td>{{ ouvrier.tel }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ouvrier_new') }}">Créer un nouvel ouvrier</a>
+        </li>
+    </ul>
+{% endblock %}

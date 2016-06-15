@@ -29,8 +29,40 @@
         </div>
         <div>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer" class="btn btn-default btn-xs">
+            <input type="submit" value="Supprimer" class="btn btn-default btn-xs">
             {{ form_end(delete_form) }}
         </div>
     </div>
+    {% if ouvriers != null %}   
+        <h3>Ouvriers affectés</h3>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for ouvrier in ouvriers %}
+                    <tr>
+                        <td><a href="{{ path('ouvrier_show', { 'id': ouvrier.id }) }}">{{ ouvrier.nom }}</a></td>
+                        <td>{{ ouvrier.prenom }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>  
+    {% endif %}
+    {% if user.role == "ROLE_ARTISAN" %}
+        <div>
+            <div>    
+                <a href="{{ path('ouvrier_new', { 'id': tache.id }) }}"class="btn btn-primary btn-lg ">Ajouter un nouvel ouvrier</a>
+
+            </div>
+            <div>
+
+                <a href="{{ path('ouvrier_recherche', { 'id': tache.id }) }}"class="btn btn-primary btn-lg ">Ajouter un ouvrier existant</a>
+            </div>   
+        </div>
+    {% endif %}
 {% endblock %}

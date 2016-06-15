@@ -9,7 +9,6 @@
                 <th>Description</th>
                 <th>Debut</th>
                 <th>Fin</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,16 +18,7 @@
                 <td>{{ tache.description }}</td>
                 <td>{% if tache.debut %}{{ tache.debut|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if tache.fin %}{{ tache.fin|date('Y-m-d') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('tache_show', { 'id': tache.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('tache_edit', { 'id': tache.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+               
             </tr>
         {% endfor %}
         </tbody>

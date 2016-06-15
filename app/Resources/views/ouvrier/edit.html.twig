@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block pageheader %}Modifier tâche{% endblock %}
+{% block pageheader %}Modifier ouvrier{% endblock %}
 {% block body %}
 
     {{ form_start(edit_form) }}
@@ -8,6 +8,9 @@
     {{ form_end(edit_form) }}
 
     <ul>
+        <li>
+            <a href="{{ path('ouvrier_index') }}">Back to the list</a>
+        </li>
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Supprimer" class="btn btn-default btn-xs">

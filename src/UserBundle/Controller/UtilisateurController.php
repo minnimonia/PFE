@@ -44,7 +44,7 @@ class UtilisateurController extends Controller {
         $user = $this->get('security.token_storage')->getToken()->getUser();
         return $this->render('Utilisateur/menu.html.twig', array('utilisateur' => $user));
     }
-    
+
     /**
      * @Route("/recherche", name="utilisateur_recherche")
      */
@@ -60,10 +60,10 @@ class UtilisateurController extends Controller {
             for ($i = 1; $i < sizeof($comp); $i++) {
                 $qb->orWhere("u.idComp = $comp[$i]");
             }
-            $entities1 =array();
-            
-            for ($i = 0; $i < sizeof($qb->getQuery()->getResult()); $i++) {                
-                $entities1[$i]=$qb->getQuery()->getResult()[$i]->getIdUser()->getId();
+            $entities1 = array();
+
+            for ($i = 0; $i < sizeof($qb->getQuery()->getResult()); $i++) {
+                $entities1[$i] = $qb->getQuery()->getResult()[$i]->getIdUser()->getId();
             }
             if ($entities1 != null) {
                 $qb2 = $em->getRepository('UserBundle:UserCode')->createQueryBuilder('v');
@@ -71,21 +71,21 @@ class UtilisateurController extends Controller {
                 for ($i = 1; $i < sizeof($code); $i++) {
                     $qb2->orWhere("v.idCode = $code[$i]");
                 }
-                
-            
-            $entities2 =array();
-            for ($i = 0; $i < sizeof($qb2->getQuery()->getResult()); $i++) {                
-            $entities2[$i]=$qb2->getQuery()->getResult()[$i]->getIdUser()->getId();    
-            }
+
+
+                $entities2 = array();
+                for ($i = 0; $i < sizeof($qb2->getQuery()->getResult()); $i++) {
+                    $entities2[$i] = $qb2->getQuery()->getResult()[$i]->getIdUser()->getId();
+                }
                 if ($entities2 != null) {
-                    $resultats =array();
-                    $resultats= array_intersect($entities2, $entities1);
+                    $resultats = array();
+                    $resultats = array_intersect($entities2, $entities1);
                     if ($resultats != null) {
-                      
+
                         $qb3 = $em->getRepository('UserBundle:Utilisateur')->createQueryBuilder('w');
-                       // $qb3->Where("w.id = $resultats[0]");
+                        // $qb3->Where("w.id = $resultats[0]");
                         foreach ($resultats as $res) {
-                            
+
                             $qb3->orWhere("w.id = $res");
                         }
 
@@ -94,7 +94,6 @@ class UtilisateurController extends Controller {
                     }
                 }
             }
-            
         }
 
         return $this->render('Utilisateur/recherche.html.twig', array('competences' => $competences, 'codes' => $codes));
@@ -141,15 +140,15 @@ class UtilisateurController extends Controller {
             $utilisateur->setPassword($password);
             $em->persist($utilisateur);
             $em->flush();
-            
-                            for ($i = 0; $i < sizeof($comp); $i++) {
-                    $competence = new \UserBundle\Entity\UserComp();
-                    $c = $em->getRepository('UserBundle:Competence')->findOneById($comp[$i]);
-                    $competence->setIdComp($c);
-                    $competence->setIdUser($utilisateur);
-                    $em->persist($competence);
-                    $em->flush();
-                }
+
+            for ($i = 0; $i < sizeof($comp); $i++) {
+                $competence = new \UserBundle\Entity\UserComp();
+                $c = $em->getRepository('UserBundle:Competence')->findOneById($comp[$i]);
+                $competence->setIdComp($c);
+                $competence->setIdUser($utilisateur);
+                $em->persist($competence);
+                $em->flush();
+            }
 
             for ($i = 0; $i < sizeof($codes); $i++) {
                 $code = new \UserBundle\Entity\UserCode();

@@ -41,21 +41,21 @@
             </tr>
         </thead>
         <tbody>
-        {% for tache in taches %}
-            <tr>
-                <td><a href="{{ path('tache_show', { 'id': tache.id }) }}">{{ tache.titre }}</a></td>
-                <td>{{ tache.description }}</td>
-                <td>{% if tache.debut %}{{ tache.debut|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if tache.fin %}{{ tache.fin|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-        {% endfor %}
+            {% for tache in taches %}
+                <tr>
+                    <td><a href="{{ path('tache_show', { 'id': tache.id }) }}">{{ tache.titre }}</a></td>
+                    <td>{{ tache.description }}</td>
+                    <td>{% if tache.debut %}{{ tache.debut|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if tache.fin %}{{ tache.fin|date('Y-m-d') }}{% endif %}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>      
-                    
+
     <div>
-        
+
         <a href="{{ path('tache_new') }}"class="btn btn-primary btn-lg pull-right">Ajouter une tâche</a>
-        
+
     </div>
 
 {% endblock %}

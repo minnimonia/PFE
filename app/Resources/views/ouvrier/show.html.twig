@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block pageheader %}Détails ouvrier{% endblock %}
+{% block body %}
+
+    <table class="table table-striped table-bordered table-hover">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ ouvrier.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ ouvrier.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ ouvrier.mail }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ ouvrier.tel }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <div>
+            <a href="{{ path('ouvrier_edit', { 'id': ouvrier.id }) }}" class="btn btn-default btn-xs">Modifier</a>
+        </div>
+        <div>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer" class="btn btn-default btn-xs">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+{% endblock %}
