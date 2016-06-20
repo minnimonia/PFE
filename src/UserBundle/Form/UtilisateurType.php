@@ -20,6 +20,7 @@ class UtilisateurType extends AbstractType
             ->add('adresse')
             ->add('mail')
             ->add('tel')
+            ->add('interet')
             ->add('photoUrl')
             ->add('password')
         ;

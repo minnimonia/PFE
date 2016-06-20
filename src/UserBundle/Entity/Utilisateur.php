@@ -97,6 +97,12 @@ class Utilisateur implements UserInterface {
      * @ORM\Column(name="username", type="string", length=255, unique=true, nullable=true)
      */
     private $username;
+    
+    /**
+     * @var string
+     * @ORM\Column(name="interet", type="string", length=255, nullable=true)
+     */
+    private $interet;
 
     public function eraseCredentials() {
         
@@ -352,4 +358,28 @@ class Utilisateur implements UserInterface {
     return "$this->id";
 }
 
+
+    /**
+     * Set interet
+     *
+     * @param string $interet
+     *
+     * @return Utilisateur
+     */
+    public function setInteret($interet)
+    {
+        $this->interet = $interet;
+
+        return $this;
+    }
+
+    /**
+     * Get interet
+     *
+     * @return string
+     */
+    public function getInteret()
+    {
+        return $this->interet;
+    }
 }

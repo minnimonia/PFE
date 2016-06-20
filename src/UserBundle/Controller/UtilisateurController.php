@@ -120,6 +120,7 @@ class UtilisateurController extends Controller {
             $utilisateur->setPrenom($user['prenom']);
             $utilisateur->setMail($user['mail']);
             $utilisateur->setTel($user['tel']);
+            $utilisateur->setInteret($user['interet']);
             if ($role == "1") {
                 $utilisateur->setRole("ROLE_PARTICULIER");
                 $utilisateur->setRoles("ROLE_PARTICULIER");
