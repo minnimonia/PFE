@@ -178,11 +178,28 @@ class UtilisateurController extends Controller {
      * @Method("GET")
      */
     public function showAction(Utilisateur $utilisateur) {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
         $deleteForm = $this->createDeleteForm($utilisateur);
-
+        $id=$utilisateur->getId();
+        $sql = "select AVG(note) from rate where idArtisan='$id'";
+        $stmt = $em
+                ->getConnection()
+                ->prepare($sql);
+        $stmt->execute();
+        $r = $stmt->fetchAll();
+        $rate=round($r[0]["AVG(note)"]);
+        $exist=$em->getRepository('UserBundle:Rate')->findByIdUser($user->getId());
+        $hide=0;
+        if($exist!=null)
+        {
+            $hide=1;
+        }
         return $this->render('utilisateur/show.html.twig', array(
                     'utilisateur' => $utilisateur,
                     'delete_form' => $deleteForm->createView(),
+                    'rate' => $rate,
+                    'hide' =>$hide,
         ));
     }
 
@@ -245,5 +262,43 @@ class UtilisateurController extends Controller {
                         ->getForm()
         ;
     }
-
+    
+    /**
+     * Finds and displays a Utilisateur entity.
+     *
+     * @Route("/rate/{id}", name="artisan_rate")
+     * @Method("POST")
+     */
+    public function rateAction(Request $request,Utilisateur $artisan) {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $star = $request->request->get('star');
+        $rate=new \UserBundle\Entity\Rate();
+        $rate->setNote(intval($star));
+        $rate->setIdArtisan($artisan);
+        $rate->setIdUser($user);
+                $em->persist($rate);
+                $em->flush();
+                $deleteForm = $this->createDeleteForm($artisan);
+        $id=$artisan->getId();
+        $sql = "select AVG(note) from rate where idArtisan='$id'";
+        $stmt = $em
+                ->getConnection()
+                ->prepare($sql);
+        $stmt->execute();
+        $r = $stmt->fetchAll();
+        $rate=round($r[0]["AVG(note)"]);
+        $exist=$em->getRepository('UserBundle:Rate')->findByIdUser($user->getId());
+        $hide=0;
+        if($exist!=null)
+        {
+            $hide=1;
+        }
+        return $this->render('utilisateur/show.html.twig', array(
+                    'utilisateur' => $artisan,
+                    'delete_form' => $deleteForm->createView(),
+                    'rate' => $rate,
+                    'hide' =>$hide,
+        ));
+    }
 }
