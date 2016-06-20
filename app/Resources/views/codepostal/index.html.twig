@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>CodePostal list</h1>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Departement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for codePostal in codePostals %}
+            <tr>
+                <td><a href="{{ path('codepostal_show', { 'id': codePostal.id }) }}">{{ codePostal.code }}</a></td>
+                <td>{{ codePostal.departement }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('codepostal_show', { 'id': codePostal.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('codepostal_edit', { 'id': codePostal.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('codepostal_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

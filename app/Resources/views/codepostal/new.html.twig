@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block pageheader %}Ajouter un code postal{% endblock %}
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form.code, {'attr': {'placeholder': 'Code', 'class' : 'form-control'}}) }}
+    {{ form_widget(form.departement, {'attr': {'placeholder': 'Département', 'class' : 'form-control'}}) }} 
+    {{ form_widget(form) }}
+       <input type="submit" value="Ajouter" class="btn btn-primary"/>
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('codepostal_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,3 +1,7 @@
+user_code_postal:
+    resource: "@UserBundle/Controller/CodePostalController.php"
+    type:     annotation
+
 planning:
     resource: "@PlanningBundle/Controller/"
     type:     annotation
