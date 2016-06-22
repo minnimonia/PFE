@@ -6,6 +6,10 @@
   width: 270px;
   display: inline-block;
 }
+img{
+    height:100%;
+    max-height:100px;
+}
 
 input.star { display: none; }
 
@@ -59,6 +63,10 @@ label.star:before {
             <tr>
                 <th>Tel</th>
                 <td>{{ utilisateur.tel }}</td>
+            </tr>
+            <tr>
+                <th>Centre d'interet</th>
+                <td>{{ utilisateur.interet }}</td>
             </tr>
             <tr>
                 <th>Note</th>

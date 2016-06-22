@@ -79,6 +79,7 @@ class TacheController extends Controller {
         for ($i = 0; $i < sizeof($idouvriers); $i++) {
             $ouvriers[$i] = $em->getRepository('PlanningBundle:Ouvrier')->findOneBy(array('id' => $idouvriers[$i]->getIdOuvrier()));
         }
+       
         return $this->render('tache/show.html.twig', array(
                     'tache' => $tache, 'user' => $user,
                     'delete_form' => $deleteForm->createView(), 'ouvriers' => $ouvriers

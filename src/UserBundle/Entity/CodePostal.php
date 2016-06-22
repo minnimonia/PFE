@@ -31,9 +31,9 @@ class CodePostal
     /**
      * @var string
      *
-     * @ORM\Column(name="departement", type="string", length=255)
+     * @ORM\Column(name="ville", type="string", length=255)
      */
-    private $departement;
+    private $ville;
 
 
     /**
@@ -71,26 +71,26 @@ class CodePostal
     }
 
     /**
-     * Set departement
+     * Set ville
      *
-     * @param string $departement
+     * @param string $ville
      *
      * @return CodePostal
      */
-    public function setDepartement($departement)
+    public function setVille($ville)
     {
-        $this->departement = $departement;
+        $this->ville = $ville;
 
         return $this;
     }
 
     /**
-     * Get departement
+     * Get ville
      *
      * @return string
      */
-    public function getDepartement()
+    public function getVille()
     {
-        return $this->departement;
+        return $this->ville;
     }
 }

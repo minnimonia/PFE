@@ -85,10 +85,11 @@ class OuvrierController extends Controller {
         if ($ta != null) {
 
             $affectation = new affectation();
-            for ($i = 1; $i < sizeof($ta); $i++) {
+            for ($i = 0; $i < sizeof($ta); $i++) {
                 $affectation->setIdTache($idTache);
 
                 $affectation->setIdOuvrier($em->getRepository('PlanningBundle:Ouvrier')->findOneBy(array('id' => $ta[$i])));
+
                 $em->persist($affectation);
                 $em->flush();
             }
